@@ -2,8 +2,46 @@
     <head>
             <link rel="stylesheet" type="text/css" href="style.css">
             <title>Chicken FM &bull Your Chicken Station</title>
+            <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> --> 
+    
+        <style>
+        body {
+    background-image: url("https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900")
+}
+
+.card {
+    width: 500px;
+    border-radius: 4px;
+    background-color: #242731;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.14), 0 3px 4px 0 rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    position: relative;
+    word-wrap: break-word;
+    margin: 0 auto;
+
+}
+
+div {
+    display: block;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+.card-body:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+        </style>
     </head>
     <body>
-            <iframe src="https://radio.viberadio.pw/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 100%; min-height: 150px; border: 0;"></iframe>
+        
+            <div class="card card-body">
+            <iframe src="https://radio.viberadio.pw/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 500px; min-height: 150px; border: 0;"></iframe>
+            </div>
+        
     </body>
 </html>
