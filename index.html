@@ -21,39 +21,59 @@
                     <div id="navigation-bar">
                       <ul>
                         <li><a href="index.html"><i class="fas fa-home"></i><span> Home</span></a></li>
-                        <li><a href="#" class="trigger"><i class="fas fa-music"></i><span> Request songs</span></a></li>
+                        <li><a href="#" id="myBtn"><i class="fas fa-music"></i><span> Request songs</span></a></li>
                         <li><a href="JavaScript:newPopup('popup.html');"><i class="material-icons">picture_in_picture</i></i><span> Pop-up player</span></a></li>
                         <li><a href="#"><i class="fa fa-book"></i><span> Contact</span></a></li>
                         <li><a href="https://viberadio.pw"><i class="fa fa-rss"></i> <span> VibeRadio</span></a></li>
                       </ul>
                     </div>
                     </div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
 
-                    <div class="modal">
-                        <div class="modal-content">
-                            <span class="close-button">×</span>
-                            <h1>Hello, I am a modal!<br><br>owo</h1>
-                        </div>
-                    </div>
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Request songs</h2>
+                  </div>
+                  <div class="modal-body">
+                        <iframe src="https://radio.viberadio.pw/public/chickenfm/embed-requests" frameborder="0" allowtransparency="true" style="width: 100%; min-height: 850px; border: 0;"></iframe>
+                  </div>
+                  <div class="modal-footer">
+                    <h3>UwU</h3>
+                  </div>
+                </div>
+              
+              </div>
                     <script>
-                                var modal = document.querySelector(".modal");
-                                var trigger = document.querySelector(".trigger");
-                                var closeButton = document.querySelector(".close-button");
-                
-                                function toggleModal() {
-                                   modal.classList.toggle("show-modal");
+                                // Get the modal
+                                var modal = document.getElementById("myModal");
+                                
+                                // Get the button that opens the modal
+                                var btn = document.getElementById("myBtn");
+                                
+                                // Get the <span> element that closes the modal
+                                var span = document.getElementsByClassName("close")[0];
+                                
+                                // When the user clicks the button, open the modal 
+                                btn.onclick = function() {
+                                  modal.style.display = "block";
                                 }
-                
-                                function windowOnClick(event) {
-                                    if (event.target === modal) {
-                                       toggleModal();
-                                    }
+                                
+                                // When the user clicks on <span> (x), close the modal
+                                span.onclick = function() {
+                                  modal.style.display = "none";
                                 }
-                
-                                trigger.addEventListener("click", toggleModal);
-                                closeButton.addEventListener("click", toggleModal);
-                                window.addEventListener("click", windowOnClick);
+                                
+                                // When the user clicks anywhere outside of the modal, close it
+                                window.onclick = function(event) {
+                                  if (event.target == modal) {
+                                    modal.style.display = "none";
+                                  }
+                                }
                                 </script>
+                                
             <div class="card card-body">
             <iframe src="https://radio.viberadio.pw/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 500px; min-height: 150px; border: 0;"></iframe>
             </div>
