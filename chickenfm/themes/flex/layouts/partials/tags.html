@@ -1,0 +1,21 @@
+{{ $taxonomies := slice }}
+{{ range $taxonomy, $pages := site.Taxonomies }}
+{{ $taxonomies = $taxonomies | append $taxonomy }}
+{{ end }}
+{{ if true | in (apply $taxonomies "isset" .Params ".") }}
+<footer>
+  {{ range $taxonomy := $taxonomies }}
+  {{ if isset $.Params $taxonomy }}
+  <ul class="Tags">
+    {{ range $term := index $.Params $taxonomy }}
+    {{ with $term | urlize | printf "/%s/%s" $taxonomy | site.GetPage }}
+    <li class="Tags-item u-background">
+      <a class="Tags-link u-clickable" href="{{ .Permalink }}" rel="tag">{{ $term }}</a>
+    </li>
+    {{ end }}
+    {{ end }}
+  </ul>
+  {{ end }}
+  {{ end }}
+</footer>
+{{ end }}
