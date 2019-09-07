@@ -1,17 +1,72 @@
 <html>
     <head>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>ChickenFM &bull; Pop Up Player</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" type="text/css" href="style.css">
+            <title>Chicken FM &bull; Popup player</title>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     </head>
-        <body>
+        <body onload="playing">
             <div class="card popupplayer">
             <h2>ChickenFM Popup player</h2>
             </div>
             <br>
-                    <div class="card card-body">
-                        <iframe src="http://157.245.33.91/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 500px; height: 120px; border: 0;"></iframe>
+            <div class="card card-body">
+                    <!--<h3 style="color:#ffffff;">ChickenFM is unfortunately down. We will be back on air as soon as possible</h3>-->
+                    <!--<iframe src="http://157.245.33.91/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 100%; min-height: 150px; border: 0;"></iframe>-->
+                    <h4 style="color:white;">Now Playing:</h4>
+                    <h3 id="track" style="color:white;">-</h3>
+                    <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
+                      <audio id="player" autoplay="false" volume="0"><source src="http://157.245.33.91:8000/radio.mp3?1567869927" type="audio/mpeg"></audio>
+                        <div class="loginbutton togglr" style="color:white;width:fit-content;">
+                            <i class="togl fa fa-play"></i>
+                          </div>
                     </div>
+                    <script>
+                        function playing() {
+                          $.getJSON('http://157.245.33.91/api/nowplaying/1', (data) => {
+                          var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
+                          document.getElementById("track").innerHTML = song.toString();
+                         });
+                         setTimeout(playing, 5000);
+                       } 	playing();
+      
+                       var stream = document.getElementById("player");
+                       stream.pause()
+                       toggleRadio()
+                     
+                      $('.togglr').click(function(){
+                        toggleRadio();
+                      });
+                      function toggleRadio(){
+                        if (stream.paused){
+                          playRadio();
+                        } else {
+                          pauseRadio();
+                        }
+                      }
+                      function playRadio(){
+                        stream.volume = 0;
+      
+                        $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
+                        stream.play().then(function() {
+                          stream.volume = 0.6;
+                          $('.togl').attr("class", "togl fa fa-pause");
+                        }).catch(function() {
+                          pauseRadio();
+                        });
+                      }
+      
+                      function pauseRadio(){
+                        stream.pause();
+                        stream.volume = 0;
+                        $('.togl').attr("class", "togl fa fa-play");
+                      }
+                      $(".reqln").click(function(){
+                        $(".modal").show()
+                      })
+                        </script>    
         </body>    
 </html>

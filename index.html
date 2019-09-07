@@ -1,6 +1,6 @@
 <html>
     <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" type="text/css" href="style.css">
             <title>Chicken FM &bull; Your Chicken Station</title>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -18,24 +18,35 @@
                 // Popup window code
                 function newPopup(url) {
                         popupWindow = window.open(
-                                url,'popUpWindow','height=300,width=550,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+                                url,'popUpWindow','height=328,width=570,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
                 }
                 </script>
 
  
     </head>
     <body onload="playing()">
-            <div id="menu-nav">
-                    <div id="navigation-bar">
-                      <ul>
-                        <li><a href="index.html"><i class="fas fa-home"></i><span> Home</span></a></li>
-                        <li><a href="#" id="myBtn"><i class="fas fa-music"></i><span> Request songs</span></a></li>
-                        <li><a href="JavaScript:newPopup('popup.html');"><i class="material-icons">picture_in_picture</i></i><span> Pop-up player</span></a></li>
-                        <li><a href="#"><i class="fa fa-book"></i><span> Discord (coming soon)</span></a></li>
-                        <li><a href="https://viberadio.pw"><i class="fa fa-rss"></i> <span> VibeRadio</span></a></li>
-                      </ul>
+
+                    <div class="topnav" id="myTopnav">
+                        <a href="index.html" class="active">Home</a>
+                        <a href="#" id="myBtn">Request songs</a>
+                        <a href="JavaScript:newPopup('popup.html');">Popup Player</a>
+                        <a href="#">Discord (coming soon)</a>
+                        <a href="#">Suggest songs (coming soon)</a>
+                        <a href="javascript:void(0);" class="icon" onclick="topnav()">
+                          <i class="fa fa-bars"></i>
+                        </a>
                     </div>
-                    </div>
+                  <div class="empty"></div>
+                    <script>
+                        function topnav() {
+                          var x = document.getElementById("myTopnav");
+                          if (x.className === "topnav") {
+                            x.className += " responsive";
+                          } else {
+                            x.className = "topnav";
+                          }
+                        }
+                        </script>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
