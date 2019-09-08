@@ -1,11 +1,25 @@
 body {
-    background-image: url("https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg");
+    /*background-image: url("https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
+    background-position:center;*/
     font: normal 300 18px "Roboto", sans-serif;
 
     
 }
+
+@media only screen {
+
+  body {
+    background-image: url("https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+ }
+
+}
+
 
 .card {
     /*width: 500px;*/
