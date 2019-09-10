@@ -14,7 +14,41 @@
             <link href="pnotify/dist/PNotifyBrightTheme.css" rel="stylesheet" type="text/css" />
             <script src="/chickenfm.js"></script>
             <!--Pnotify to notify you about the developement hihi-->
-            <script> </script>
+            <script>
+            function showStackTopCenter(type) {
+  if (typeof window.stackTopCenter === 'undefined') {
+    window.stackBottomRight = {
+      'dir1': 'up',
+      'dir2': 'left',
+      'firstpos1': 25,
+      'firstpos2': 25
+    };
+  }
+  var opts = {
+    title: 'Over Here',
+    text: "Check me out. I'm in a different stack.",
+    stack: window.stackBottomRight
+  };
+  switch (type) {
+    case 'error':
+      opts.title = 'Oh No';
+      opts.text = 'Watch out for that water tower!';
+      opts.type = 'error';
+      break;
+    case 'info':
+      opts.title = 'Still in developement';
+      opts.text = 'ChickenFM.ga is still in developement. If you experience any issues, send a DM to trashcan#2971 on discord.';
+      opts.type = 'info';
+      break;
+    case 'success':
+      opts.title = 'Good News Everyone';
+      opts.text = "I've invented a device that bites shiny metal asses.";
+      opts.type = 'success';
+      break;
+  }
+  PNotify.alert(opts);
+}
+            </script>
             <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> --> 
             <!--Thanks to @DawsonX#9322 on discord :)-->
             <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
@@ -127,6 +161,7 @@
                var stream = document.getElementById("player");
                stream.pause()
                //loadRadio()
+               showStackTopCenter('info');
               
               $('.togglr').click(function(){
                 toggleRadio();
@@ -192,16 +227,6 @@
              /* $(".reqln").click(function(){
                 $(".modal").show()
               })*/
-
-              function loadRadio(){
-    stream.pause();
-    stream.volume = 0;
-    $('.togl').attr("class", "togl fa fa-play");
-  }
-$(".reqln").click(function(){
-	$(".modal").show()
-})
-
               </script>
         
     </body>
