@@ -7,7 +7,14 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.0.0/pnotify.js?1568124206"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <script type="text/javascript" src="pnotify/dist/iife/PNotify.js"></script>
+            <script type="text/javascript" src="pnotify/dist/iife/PNotifyButtons.js"></script>
+            <link href="pnotify/dist/PNotifyBrightTheme.css" rel="stylesheet" type="text/css" />
+            <script src="/chickenfm.js"></script>
+            <!--Pnotify to notify you about the developement hihi-->
+            <script> </script>
             <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> --> 
             <!--Thanks to @DawsonX#9322 on discord :)-->
             <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
@@ -47,19 +54,19 @@
                           }
                         }
                         </script>
-<!-- The Modal -->
-<div id="myModal" class="modal">
+            <!-- The Modal -->
+              <div id="myModal" class="songreq">
 
                 <!-- Modal content -->
-                <div class="modal-content">
-                  <div class="modal-header">
+                <div class="songreq-content">
+                  <div class="songreq-header">
                     <span class="close">&times;</span>
                     <h2>Request songs</h2>
                   </div>
-                  <div class="modal-body">
+                  <div class="songreq-body">
                         <iframe src="http://157.245.33.91/public/chickenfm/embed-requests" frameborder="0" allowtransparency="true" style="width: 100%; height: 75%; border: 0;"></iframe>
                   </div>
-                  <div class="modal-footer">
+                  <div class="songreq-footer">
                     <h3>UwU</h3>
                   </div>
                 </div>
@@ -95,7 +102,7 @@
 
 
                                 
-            <div class="card card-body">
+            <div class="player player-body">
               <!--<h3 style="color:#ffffff;">ChickenFM is unfortunately down. We will be back on air as soon as possible</h3>-->
               <!--<iframe src="http://157.245.33.91/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 100%; min-height: 150px; border: 0;"></iframe>-->
               <h4 style="color:white;">Now Playing:</h4>
@@ -105,51 +112,97 @@
                   <div class="loginbutton togglr" style="color:white;width:fit-content;">
                       <i class="togl fa fa-play"></i>
                     </div>
-              </div>
-              <script>
-                  function playing() {
-                    $.getJSON('http://157.245.33.91/api/nowplaying/1', (data) => {
-                    var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
-                    document.getElementById("track").innerHTML = song.toString();
-                   });
-                   setTimeout(playing, 5000);
-                 } 	playing();
-
-                 var stream = document.getElementById("player");
-                 stream.pause()
-                 toggleRadio()
-               
-                $('.togglr').click(function(){
-                  toggleRadio();
-                });
-                function toggleRadio(){
-                  if (stream.paused){
-                    playRadio();
-                  } else {
-                    pauseRadio();
-                  }
+              </div>  
+              
+              
+              <script type="text/javascript">
+                function playing() {
+                  $.getJSON('http://157.245.33.91/api/nowplaying/1', (data) => {
+                  var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
+                  document.getElementById("track").innerHTML = song.toString();
+                 });
+                 setTimeout(playing, 5000);
+               } 	playing();
+              
+               var stream = document.getElementById("player");
+               stream.pause()
+               //loadRadio()
+              
+              $('.togglr').click(function(){
+                toggleRadio();
+              });
+              function toggleRadio(){
+                if (stream.paused){
+                  playRadio();
+                } else {
+                  pauseRadio();
                 }
-                function playRadio(){
-                  stream.volume = 0;
-
-                  $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
-                  stream.play().then(function() {
-                    stream.volume = 0.6;
-                    $('.togl').attr("class", "togl fa fa-pause");
-                  }).catch(function() {
-                    pauseRadio();
+              }
+              function playRadio(){
+                stream.volume = 0;
+              
+                $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
+                stream.play().then(function() {
+                  stream.volume = 0.6;
+                  $('.togl').attr("class", "togl fa fa-pause");
+                  //Pnotify
+                  var notice = PNotify.success({
+                  title: 'ChickenFM',
+                  text: 'ChickenFM started playing!',
+                  modules: {
+                      Buttons: {
+                        closer: true,
+                        sticker: false,
+                        closerHover: false,
+                        stickerHover: false
+                      }
+                    }
                   });
-                }
+                  notice.on('click', function() {
+                    notice.close();
+                  });
+              
+                }).catch(function() {
+                  pauseRadio();
+                });
+              }
+              
+              function pauseRadio(){
+                stream.pause();
+                stream.volume = 0;
+                $('.togl').attr("class", "togl fa fa-play");
+                //Pnotify
+                var notice = PNotify.success({
+                  title: 'ChickenFM',
+                  text: 'ChickenFM stopped playing',
+                  modules: {
+                      Buttons: {
+                        closer: true,
+                        sticker: false,
+                        closerHover: false,
+                        stickerHover: false
+                      }
+                    }
+                  });
+                  notice.on('click', function() {
+                    notice.close();
+                  });
+              }
 
-                function pauseRadio(){
-                  stream.pause();
-                  stream.volume = 0;
-                  $('.togl').attr("class", "togl fa fa-play");
-                }
-                $(".reqln").click(function(){
-                  $(".modal").show()
-                })
-                  </script>      
+             /* $(".reqln").click(function(){
+                $(".modal").show()
+              })*/
+
+              function loadRadio(){
+    stream.pause();
+    stream.volume = 0;
+    $('.togl').attr("class", "togl fa fa-play");
+  }
+$(".reqln").click(function(){
+	$(".modal").show()
+})
+
+              </script>
         
     </body>
 </html>

@@ -21,7 +21,7 @@ body {
 }
 
 
-.card {
+.player {
     /*width: 500px;*/
     border-radius: 4px;
     background-color: #242731;
@@ -44,11 +44,11 @@ div {
   padding: 50px;
 }
 
-.card-body {
+.player-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
 }
-.card-body:first-child {
+.player-body:first-child {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
 }
@@ -163,8 +163,8 @@ li {
 }*/
 
 
-/* The Modal (background) */
-.modal {
+/* The songreq (background) */
+.songreq {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -178,8 +178,8 @@ li {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content */
-.modal-content {
+/* songreq Content */
+.songreq-content {
   position: relative;
   background-color: #ffffff;
   margin: auto;
@@ -219,15 +219,15 @@ li {
   cursor: pointer;
 }
 
-.modal-header {
+.songreq-header {
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.songreq-body {padding: 2px 16px;}
 
-.modal-footer {
+.songreq-footer {
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
