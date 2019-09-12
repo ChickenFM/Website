@@ -12,7 +12,29 @@
             <script type="text/javascript" src="pnotify/dist/iife/PNotify.js"></script>
             <script type="text/javascript" src="pnotify/dist/iife/PNotifyButtons.js"></script>
             <link href="pnotify/dist/PNotifyBrightTheme.css" rel="stylesheet" type="text/css" />
-            <script src="/chickenfm.js"></script>
+            <script type="text/javascript" src="/chickenfm.js"></script>
+            <link rel="manifest" href="/manifest.json">
+
+            <!--Meta tags-->
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+            <meta name="apple-mobile-web-app-title" content="Weather PWA">
+            <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
+            <meta name="theme-color" content="#0034FF" />
+            <!--Thanks to @DawsonX#9322 on discord :)-->
+             <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
+             <meta property="og:description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
+             <meta name="author" content="ChickenFM">
+             <!--Register service worker-->
+             <script>// CODELAB: Register service worker.
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('/service-worker.js')
+                      .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                      });
+                });
+              };</script>
             <!--Pnotify to notify you about the developement hihi-->
             <script>
             function showStackTopCenter(type) {
@@ -50,10 +72,7 @@
 }
             </script>
             <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> --> 
-            <!--Thanks to @DawsonX#9322 on discord :)-->
-            <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
-            <meta property="og:description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
-            <meta name="author" content="ChickenFM">
+
 
             <script type="text/javascript">
                 // Popup window code
@@ -71,6 +90,7 @@
                         <a href="index.html" class="active">Home</a>
                         <a href="#" id="myBtn">Request songs</a>
                         <a href="JavaScript:newPopup('popup.html');">Popup Player</a>
+                        <a href="#" id="butInstall">Install App</a>
                         <a href="#">Discord (coming soon)</a>
                         <a href="#">Suggest songs (coming soon)</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">

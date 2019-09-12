@@ -11,7 +11,7 @@ body {
 @media only screen {
 
   body {
-    background-image: url("https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg");
+    background-image: url("/images/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
