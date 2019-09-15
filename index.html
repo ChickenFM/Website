@@ -172,7 +172,7 @@
                   $.getJSON('http://157.245.33.91/api/nowplaying/1', (data) => {
                   var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
                   document.getElementById("track").innerHTML = song.toString();
-                  var dj = data.live.streamer_name;
+                  var dj = data.live.streamer_name + ":";
                   document.getElementById("dj").innerHTML = dj.toString()
 
                  });
