@@ -41,11 +41,11 @@ const FILES_TO_CACHE = [
   });
   
   self.addEventListener('fetch', (evt) => {
-    //console.log('[ServiceWorker] Fetch', evt.request.url);
+    console.log('[ServiceWorker] Fetch', evt.request.url);
     // CODELAB: Add fetch event handler here.
     if (evt.request.mode !== 'navigate') {
   // Not a page navigation, bail.
-  return;
+  
   evt.respondWith(
     fetch(evt.request)
         .catch(() => {
