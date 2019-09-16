@@ -91,6 +91,7 @@
                         <a href="JavaScript:newPopup('popup.html');">Popup Player</a>
                         <a href="#">Discord (coming soon)</a>
                         <a href="#">Suggest songs (coming soon)</a>
+                        <a href="https://twitter.com/carsonfinancee">Hosted by Liquid</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
                         </a>
@@ -165,7 +166,7 @@
                 <h5 id="artist" style="float:right; color:white;">-</h5>
               </div>
               <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
-                <audio id="player" autoplay="false" volume="0"><source src="http://157.245.33.91:8000/radio.mp3?1567869927" type="audio/mpeg"></audio>
+                <audio id="player" autoplay="false" volume="0"><source src="https://admin.chickenfm.ga/radio/8000/radio.mp3?1568647813" type="audio/mpeg"></audio>
                   <div class="loginbutton togglr" style="color:white;width:fit-content;">
                       <i class="togl fa fa-play" style="text-align: center;"></i>
                    </div>
@@ -176,7 +177,7 @@
               
 
                 function playing() {
-                  $.getJSON('http://157.245.33.91/api/nowplaying/1', (data) => {
+                  $.getJSON('https://admin.chickenfm.ga/api/nowplaying/1', (data) => {
                   var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
                   var track = data.now_playing.song.title;
                   var artist = data.now_playing.song.artist;
