@@ -60,12 +60,33 @@ body {
   top: 50%;*/
 }
 
+.empty1 {
+  padding: 1em;
+}
+
+.togglr {
+  /*float: left;*/
+  font-size: 2em;
+  margin-top: 4em;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.togl {
+  text-align:center;
+}
+
 .player {
     /*width: 500px;*/
     border-radius: 4px;
     background-color: #242731;
     box-shadow: 0 0 4px 0 rgba(0,0,0,.14), 0 3px 4px 0 rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
-    display: block;
+    /*display: flex;*/
     flex-direction: column;
     min-width: 300px;
     max-width: 500px;
@@ -86,6 +107,7 @@ div {
 .player-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
+    min-height: 12em;
 
 }
 .player-body:first-child {
