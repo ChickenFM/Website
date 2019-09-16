@@ -20,13 +20,52 @@ body {
 
 }
 
+.h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+
+}
+
+.h4 {
+  display: block;
+  font-size: 1em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  float:right;
+}
+
+.djimage {
+  box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
+  -webkit-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
+  -moz-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
+  border-radius: 10%;
+  border: 1px solid white;
+  width: 7.667vw;
+  height: 7.667vw;
+  /*overflow: hidden;
+  text-align: left;
+  vertical-align:middle;*/
+  /*float:left;
+  /*transform: translate(-50%, -50%);*/
+  /*position: absolute;*/
+  /*left: 10%;
+  top: 50%;*/
+}
 
 .player {
     /*width: 500px;*/
     border-radius: 4px;
     background-color: #242731;
     box-shadow: 0 0 4px 0 rgba(0,0,0,.14), 0 3px 4px 0 rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
-    display: flex;
+    display: block;
     flex-direction: column;
     min-width: 300px;
     max-width: 500px;
@@ -47,6 +86,7 @@ div {
 .player-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
+
 }
 .player-body:first-child {
     border-top-left-radius: 4px;
@@ -234,16 +274,3 @@ li {
 }
 
 
-.djimage {
-  box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
-  -webkit-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
-  -moz-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
-  border-radius: 10%;
-  border: 1px solid white;
-  width: 8.667vw;
-  height: 8.667vw;
-  transform: translate(-50%, -50%);
-  position: absolute;
-  left: 115%;
-  top: 50%;
-}
