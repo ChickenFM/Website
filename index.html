@@ -178,9 +178,15 @@
                   var track = data.now_playing.song.title;
                   var artist = data.now_playing.song.artist;
                   document.getElementById("track").innerHTML = song.toString();
-                  var dj = data.live.streamer_name + ":";
+                  //var dj = data.live.streamer_name + ":";
+                  var djstat = data.live.streamer_name;
                   document.getElementById("dj").innerHTML = dj.toString()
-                  
+                  if(djstat == "") {
+                    document.getElementById("dj").innerHTML = "AutoDJ";
+                  } else {
+                    document.getElementById("dj").innerHTML = dj.toString();
+                  } 
+
                   coversrc = data.now_playing.song.art;
                   //imagesrc = cover.toString();
                   //imagehtml = '<img src="'+imagesrc+'"></img>'
