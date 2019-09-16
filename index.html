@@ -164,17 +164,31 @@
                   <div class="loginbutton togglr" style="color:white;width:fit-content;">
                       <i class="togl fa fa-play"></i>
                     </div>
+                    <!--<div id="coverimg" class="djimage"></div>-->
+                    <img class="djimage" id="coverimg" src="s"></img>
               </div>  
               
               
               <script type="text/javascript">
+              
+
                 function playing() {
                   $.getJSON('http://157.245.33.91/api/nowplaying/1', (data) => {
                   var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
+                  var track = data.now_playing.song.title;
+                  var artist = data.now_playing.song.artist;
                   document.getElementById("track").innerHTML = song.toString();
                   var dj = data.live.streamer_name + ":";
                   document.getElementById("dj").innerHTML = dj.toString()
-
+                  
+                  coversrc = data.now_playing.song.art;
+                  //imagesrc = cover.toString();
+                  //imagehtml = '<img src="'+imagesrc+'"></img>'
+                  image = document.getElementById('coverimg');
+                  image.src = coversrc.toString();
+                  //image.innerHTML = imagehtml.toString()
+                  //image.innerHTML = cover.toString();
+                 
                  });
                  setTimeout(playing, 5000);
                } 	playing();
@@ -244,7 +258,9 @@
                     notice.close();
                   });
               }
+              
 
+              
              /* $(".reqln").click(function(){
                 $(".modal").show()
               })*/
