@@ -159,9 +159,11 @@
               <img class="djimage" id="coverimg" style="float:left;" src="s"></img>
               <!--<h3 style="color:#ffffff;">ChickenFM is unfortunately down. We will be back on air as soon as possible</h3>-->
               <!--<iframe src="http://157.245.33.91/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 100%; min-height: 150px; border: 0;"></iframe>-->
-              <span class="h4" id="dj" style="float:right; color:white;">Now Playing:</span><br><br>
-              <span class="h3" id="track" style="float:right; color:white;">-</span>
-
+              <div class="nowplaying">
+                <span class="dj" id="dj" style="float:right; color:white;">Now Playing:</span><br>
+                <h3 id="track" style="float:right; color:white;">-</h3><br>
+                <h5 id="artist" style="float:right; color:white;">-</h5>
+              </div>
               <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
                 <audio id="player" autoplay="false" volume="0"><source src="http://157.245.33.91:8000/radio.mp3?1567869927" type="audio/mpeg"></audio>
                   <div class="loginbutton togglr" style="color:white;width:fit-content;">
@@ -178,7 +180,8 @@
                   var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
                   var track = data.now_playing.song.title;
                   var artist = data.now_playing.song.artist;
-                  document.getElementById("track").innerHTML = song.toString();
+                  document.getElementById("track").innerHTML = track.toString();
+                  document.getElementById("artist").innerHTML = artist.toString();
                   //var dj = data.live.streamer_name + ":";
                   var djstat = data.live.streamer_name;
                   document.getElementById("dj").innerHTML = dj.toString()
