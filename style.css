@@ -240,8 +240,8 @@ li {
   -moz-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
   border-radius: 10%;
   border: 1px solid white;
-  width: 6.667vw;
-  height: 6.667vw;
+  width: 8.667vw;
+  height: 8.667vw;
   transform: translate(-50%, -50%);
   position: absolute;
   left: 115%;
