@@ -56,6 +56,8 @@ body {
   float:right;
 }
 
+
+
 .nowplaying:hover {
   overflow: visible;
 
@@ -262,7 +264,7 @@ li {
 /* songreq Content */
 .songreq-content {
   position: relative;
-  background-color: #ffffff;
+  background-color: #000000;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
