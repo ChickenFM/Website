@@ -1,6 +1,6 @@
 <html>
     <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta charset="utf-8"/>
             <link rel="stylesheet" type="text/css" href="style.css">
             <title>Chicken FM &bull; Your Chicken Station</title>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
@@ -16,15 +16,22 @@
             <link rel="manifest" href="/manifest.json">
 
             <!--Meta tags-->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
             <meta name="apple-mobile-web-app-title" content="Weather PWA">
             <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
             <meta name="theme-color" content="#0034FF" />
+            <meta name="title" content="ChickenFM - Your Chicken Station">
+            <meta name="keywords" content="ChickenFM, chickenfm, chicken fm, chicken, free radio, chickens, good music">
+            <meta name="robots" content="index, follow">
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <meta name="language" content="English">
+            <meta name="revisit-after" content="14 days">
             <!--Thanks to @DawsonX#9322 on discord :)-->
-             <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
-             <meta property="og:description" content="This is ChickenFM, sotp listening to bad music or else you're bald">
-             <meta name="author" content="ChickenFM">
+             <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
+             <meta property="og:description" content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
+             <meta name="author" content="TheChicken">
              <!--Register service worker-->
              <script>// CODELAB: Register service worker.
               if ('serviceWorker' in navigator) {
@@ -176,8 +183,6 @@
 
               
               <script type="text/javascript">
-              
-
                 function playing() {
                   $.getJSON('https://admin.chickenfm.ga/api/nowplaying/1', (data) => {
                   var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
@@ -254,7 +259,11 @@
               }
 
 
-
+              function volumeChange(){
+                volumeslider = document.getElementById("volumeslider");
+                stream.volume = volumeslider.value / 100;
+                setTimeout(volumeChange, 1000);
+              } volumeChange()
               
              /* $(".reqln").click(function(){
                 $(".modal").show()
@@ -262,7 +271,7 @@
               </script>
         
         <div class="footer">
-          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Hosted by <a href="https://twitter.com/carsonfinancee">Liquid</a>. Version <code>0.14</code></p>
+          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Hosted by <a href="https://twitter.com/carsonfinancee">Liquid</a>. Version <code>0.14.2</code></p>
         </div>
     </body>
 </html>
