@@ -90,6 +90,19 @@ body {
   top: 50%;*/
 }
 
+
+@media screen and (max-width: 600px) {
+  .djimage {
+    width: 5em;
+    height: 5em; 
+  }
+
+  .nowplaying {
+    width: 15em;
+  }
+}
+
+
 .empty1 {
   padding: 1em;
 }
@@ -119,6 +132,10 @@ body {
    margin-right: -50%;
    transform: translate(-50%, -50%)
 
+}
+
+.displaynone {
+  display: none;
 }
 
 .togl {
@@ -333,3 +350,5 @@ li {
   background-color: #5cb85c;
   color: white;
 }
+
+
