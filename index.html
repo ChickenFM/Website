@@ -167,9 +167,11 @@
               </div>
               <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
                 <audio id="player" autoplay="false" volume="0"><source src="https://admin.chickenfm.ga/radio/8000/radio.mp3?1568647813" type="audio/mpeg"></audio>
-                  <div class="loginbutton togglr" style="color:white;width:fit-content;">
-                      <i class="togl fa fa-play" style="text-align: center;"></i>
-                   </div>
+                  <div style="color:white;width:fit-content;">
+                      <div class="togglr"><i class="togl fa fa-play" style="text-align: center;"></i></div>
+                      <input id="volumeslider" class="volume" type="range" min="0" max="100" value="100" step="1">
+              </div>
+
               </div>  
 
               
@@ -207,9 +209,14 @@
                var stream = document.getElementById("player");
                stream.pause()
                //loadRadio()
+               volumeslider = document.getElementById("volumeslider");
+               volumeslider.addEventListener("mousemove", setvolume);
+              function setvolume(){
+	              stream.volume = volumeslider.value / 100;
+              }
                showStackTopCenter('info');
               
-              $('.togglr').click(function(){
+              $('.togl').click(function(){
                 toggleRadio();
               });
               function toggleRadio(){
@@ -220,6 +227,7 @@
                 }
               }
               function playRadio(){
+                stream.src = "https://admin.chickenfm.ga/radio/8000/radio.mp3?1568647813";
                 stream.volume = 0; 
               
                 $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
@@ -227,21 +235,6 @@
                   stream.volume = 0.6;
                   $('.togl').attr("class", "togl fa fa-pause");
                   //Pnotify
-                  var notice = PNotify.success({
-                  title: 'ChickenFM',
-                  text: 'ChickenFM started playing!',
-                  modules: {
-                      Buttons: {
-                        closer: true,
-                        sticker: false,
-                        closerHover: false,
-                        stickerHover: false
-                      }
-                    }
-                  });
-                  notice.on('click', function() {
-                    notice.close();
-                  });
               
                 }).catch(function() {
                   pauseRadio();
@@ -249,27 +242,14 @@
               }
               
               function pauseRadio(){
-                stream.pause();
-                stream.volume = 0;
+                //stream.pause();
+                //stream.volume = 0;
+                stream.src = "";
                 $('.togl').attr("class", "togl fa fa-play");
                 //Pnotify
-                var notice = PNotify.success({
-                  title: 'ChickenFM',
-                  text: 'ChickenFM stopped playing',
-                  modules: {
-                      Buttons: {
-                        closer: true,
-                        sticker: false,
-                        closerHover: false,
-                        stickerHover: false
-                      }
-                    }
-                  });
-                  notice.on('click', function() {
-                    notice.close();
-                  });
               }
-              
+
+
 
               
              /* $(".reqln").click(function(){

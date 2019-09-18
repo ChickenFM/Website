@@ -78,8 +78,8 @@ body {
   -moz-box-shadow: inset 0px 0px 0px 2px rgba(0, 0, 0, 0.05), inset 0 0 20px rgb(0, 0, 0, 0.08);
   border-radius: 10%;
   border: 1px solid white;
-  width: 9em;
-  height: 9em;
+  width: 10em;
+  height: 10em;
   /*overflow: hidden;
   text-align: left;
   vertical-align:middle;*/
@@ -105,6 +105,20 @@ body {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
+}
+
+.volume {
+   /*float: left;*/
+   font-size: 2em;
+   /*margin-top: 4em;*/
+   text-align: center;
+   margin: 0;
+   position: absolute;
+   top: 87%;
+   left: 50%;
+   margin-right: -50%;
+   transform: translate(-50%, -50%)
+
 }
 
 .togl {
@@ -180,7 +194,7 @@ div {
   display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .topnav a:not(:first-child) {display: none;}
   .topnav a.icon {
     float: right;
@@ -188,7 +202,7 @@ div {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
