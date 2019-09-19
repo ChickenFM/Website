@@ -1,3 +1,4 @@
+<!doctype html>
 <html>
     <head>
             <meta charset="utf-8"/>
@@ -223,6 +224,23 @@
                   //image.innerHTML = imagehtml.toString()
                   //image.innerHTML = cover.toString();
                  
+                  // When audio starts playing...
+                  if ('mediaSession' in navigator) {
+                  navigator.mediaSession.metadata = new MediaMetadata({
+                      title: track,
+                      artist: artist,
+                      album: 'ChickenFM',
+                      artwork: [
+                          { src: coversrc.toString(), type: 'image/png' },
+                    ]
+                      });
+                  navigator.mediaSession.setActionHandler('play', function(){
+                    playRadio()
+                  });
+                  navigator.mediaSession.setActionHandler('pause', function(){
+                    pauseRadio()
+                      });
+                    }   
                  });
                  setTimeout(playing, 5000);
                } 	playing();
@@ -287,7 +305,7 @@
               </script>
         
         <div class="footer">
-          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Hosted by <a href="https://twitter.com/carsonfinancee">Liquid</a>. Version <code>0.14.2</code></p>
+          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Hosted by <a href="https://twitter.com/carsonfinancee">Liquid</a>. Version <code>0.14.3</code></p>
         </div>
     </body>
 </html>
