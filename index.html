@@ -114,7 +114,7 @@
                         <a href="#" id="myBtn">Request songs</a>
                         <a href="JavaScript:newPopup('popup.html');">Popup Player</a>
                         <a href="#">Discord (coming soon)</a>
-                        <a href="#">Suggest songs (coming soon)</a>
+                        <a href="#popup1">Suggest songs</a>
                         <a href="https://twitter.com/carsonfinancee">Hosted by Liquid</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
@@ -131,10 +131,28 @@
                           }
                         }
                         </script>
+
+                        <div id="popup1" class="overlay">
+                            <div class="popup">
+                              <h2>Suggest songs</h2>
+                              <a class="close" href="#">&times;</a>
+                              <div class="content">
+                                <!--<form onsubmit="sendMessage()">-->
+                                <label for="name">Name: </label><br>
+                                <input id="name" type="text" class="request" autofocus="autofocus" placeholder="Name" required="requeired" autocomplete="off"><br>
+                                <label for="name">Song/message: </label><br>
+                                <input id="message" type="text" class="request" required="required" placeholder="Song/Message" autocomplete="off"><br><br>
+                                <div id="submiterror"></div>
+                                <div id="submitreq"><button type="button" onclick="sendMessage()" value="Send message!">Send message!</button></div>
+                                <!--</form>-->
+                              </div>
+                            </div>
+                          </div>
+
+
             <!-- The Modal -->
               <div id="myModal" class="songreq">
-
-                <!-- Modal content -->
+                                <!-- Modal content -->
                 <div class="songreq-content">
                   <div class="songreq-header">
                     <span class="close">&times;</span>
@@ -305,7 +323,7 @@
               </script>
         
         <div class="footer">
-          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Hosted by <a href="https://twitter.com/carsonfinancee">Liquid</a>. Version <code>0.14.3</code></p>
+          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Hosted by <a href="https://twitter.com/carsonfinancee">Liquid</a>. Version <code>0.15</code></p>
         </div>
     </body>
 </html>
