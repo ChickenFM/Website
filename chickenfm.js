@@ -1,16 +1,16 @@
 
 
 function sendMessage(){
-   msg = document.getElementById("message").value;
+   var msg = document.getElementById("message").value;
    console.log(msg.value);
-   name = document.getElementById("name").value;
+   var name = document.getElementById("name").value;
 
    if(msg == "" || name == ""){
       document.getElementById("submiterror").innerHTML = "<p style='text-align:center;'>You need to enter a name and message!</p>";
       document.getElementById("submiterror").style = "background-color: red;";
-      exit(0)
+      
    }
- 
+ if(msg !== "" || name !== ""){
  var url = "https://wissehes.nl/chickenfm.php";
  var params = "name="+name+"&msg="+msg;
  var xhr = new XMLHttpRequest();
@@ -24,4 +24,5 @@ function sendMessage(){
  document.getElementById("submitreq").innerHTML = "<p style='text-align:center;'>success!</p>";
  document.getElementById("submiterror").innerHTML = "";
 
+}
 }
