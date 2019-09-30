@@ -207,7 +207,7 @@
                 <h5 id="artist" class="artist" style="float:right; color:white;">-</h5><br>
               </div>
               <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
-                <audio id="player" autoplay="false" volume="0"><source src="https://admin.chickenfm.ga/radio/8000/radio.mp3?1568647813" type="audio/mpeg"></audio>
+                <audio id="player" autoplay="false" volume="0"><source src="https://radio.chickenfm.com/radio/8000/radio.mp3?1568647813" type="audio/mpeg"></audio>
                   <div style="color:white;width:fit-content;">
                       <div class="togglr"><i class="togl fa fa-play" style="text-align: center;"></i></div>
                       <input id="volumeslider" class="volume displaynone" type="range" min="0" max="100" value="50" step="1">
@@ -218,7 +218,7 @@
               
               <script type="text/javascript">
                 function playing() {
-                  $.getJSON('https://admin.chickenfm.ga/api/nowplaying/1', (data) => {
+                  $.getJSON('https://radio.chickenfm.com/api/nowplaying/1', (data) => {
                   var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
                   var track = data.now_playing.song.title;
                   var artist = data.now_playing.song.artist;
@@ -286,7 +286,7 @@
                 }
               }
               function playRadio(){
-                stream.src = "https://admin.chickenfm.ga/radio/8000/radio.mp3?1568647813";
+                stream.src = "https://radio.chickenfm.com/radio/8000/radio.mp3?1568647813";
                 //stream.volume = 0;
 
                 $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
