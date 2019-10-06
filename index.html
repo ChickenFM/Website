@@ -5,7 +5,7 @@
             <title>Chicken FM &bull; Your Chicken Station</title>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.0.0/pnotify.js?1568124206"></script>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -93,7 +93,7 @@
               PNotify.alert(opts);
             }
             </script>
-            <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> --> 
+            <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> -->
 
 
             <script type="text/javascript">
@@ -104,7 +104,7 @@
                 }
                 </script>
 
- 
+
     </head>
     <body onload="playing()">
 <div id="bg"></div>
@@ -114,6 +114,7 @@
                         <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>-->
                         <a href="https://discord.gg/pYFx3xK">Discord Server</a>
                         <a href="#popup1">Suggest songs</a>
+                        <a href="https://onlineradiobox.com/nl/chicken/?cs=nl.chicken">OnlineRadioBox</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
                         </a>
@@ -164,28 +165,28 @@
                   <h3>ChickenFM</h3>
                 </div>
               </div>
-            
+
             </div>
                     <script>
                                 // Get the modal
                                 var modal = document.getElementById("myModal");
-                                
+
                                 // Get the button that opens the modal
                                 var btn = document.getElementById("myBtn");
-                                
+
                                 // Get the <span> element that closes the modal
                                 var span = document.getElementsByClassName("close")[0];
-                                
-                                // When the user clicks the button, open the modal 
+
+                                // When the user clicks the button, open the modal
                                 btn.onclick = function() {
                                   modal.style.display = "block";
                                 }
-                                
+
                                 // When the user clicks on <span> (x), close the modal
                                 span.onclick = function() {
                                   modal.style.display = "none";
                                 }
-                                
+
                                 // When the user clicks anywhere outside of the modal, close it
                                 window.onclick = function(event) {
                                   if (event.target == modal) {
@@ -195,7 +196,7 @@
                                 </script>
 
 
-                                
+
             <div class="player player-body">
               <!--<div id="coverimg" class="djimage"></div>-->
               <img class="djimage" id="coverimg" style="float:left;" src="s" />
@@ -213,9 +214,9 @@
                       <input id="volumeslider" class="volume displaynone" type="range" min="0" max="100" value="50" step="1">
               </div>
 
-              </div>  
+              </div>
 
-              
+
               <script type="text/javascript">
                 function playing() {
                   $.getJSON('https://radio.chickenfm.com/api/nowplaying/1', (data) => {
@@ -234,7 +235,7 @@
                     document.getElementById("dj").innerHTML = djstat.toString();
                     //document.getElementById("request").innerHTML = `<a href="#popup1">Suggest songs</a>`;
 
-                  } 
+                  }
 
                   coversrc = data.now_playing.song.art;
                   //imagesrc = cover.toString();
@@ -243,7 +244,7 @@
                   image.src = coversrc.toString();
                   //image.innerHTML = imagehtml.toString()
                   //image.innerHTML = cover.toString();
-                 
+
                   // When audio starts playing...
                   if ('mediaSession' in navigator) {
                   navigator.mediaSession.metadata = new MediaMetadata({
@@ -260,11 +261,11 @@
                   navigator.mediaSession.setActionHandler('pause', function(){
                     pauseRadio()
                       });
-                    }   
+                    }
                  });
                  setTimeout(playing, 5000);
                } 	playing();
-              
+
                var stream = document.getElementById("player");
                stream.pause()
                //loadRadio()
@@ -274,7 +275,7 @@
 	              stream.volume = volumeslider.value / 100;
               }
                showStackTopCenter('info');
-              
+
               $('.togl').click(function(){
                 toggleRadio();
               });
@@ -302,7 +303,7 @@
                   pauseRadio();
                 });
               }
-              
+
               function pauseRadio(){
                 stream.pause();
                 stream.volume = 0;
@@ -318,7 +319,7 @@
                 stream.volume = volumeslider.value / 100;
                 setTimeout(volumeChange, 1000);
               } volumeChange()
-              
+
              /* $(".reqln").click(function(){
                 $(".modal").show()
               })*/
@@ -333,30 +334,30 @@ var refreshDuration = 10000;
         var unitWidth;
         var unitHeight;
         var points;
-        
+
         function onLoad()
         {
             var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
             svg.setAttribute('width',window.outerWidth);
             svg.setAttribute('height',window.outerHeight);
             document.querySelector('#bg').appendChild(svg);
-        
+
             var unitSize = (window.innerWidth+window.innerHeight)/15;
             numPointsX = Math.ceil(window.innerWidth/unitSize)+1;
             numPointsY = Math.ceil(window.innerHeight/unitSize)+1;
             unitWidth = Math.ceil(window.innerWidth/(numPointsX-1));
             unitHeight = Math.ceil(window.innerHeight/(numPointsY-1));
-        
+
             points = [];
-        
+
             for(var y = 0; y < numPointsY; y++) {
                 for(var x = 0; x < numPointsX; x++) {
                     points.push({x:unitWidth*x, y:unitHeight*y, originX:unitWidth*x, originY:unitHeight*y});
                 }
             }
-        
+
             randomize();
-        
+
             for(var i = 0; i < points.length; i++) {
                 if(points[i].originX != unitWidth*(numPointsX-1) && points[i].originY != unitHeight*(numPointsY-1)) {
                     var topLeftX = points[i].x;
@@ -367,12 +368,12 @@ var refreshDuration = 10000;
                     var bottomLeftY = points[i+numPointsX].y;
                     var bottomRightX = points[i+numPointsX+1].x;
                     var bottomRightY = points[i+numPointsX+1].y;
-        
+
                     var rando = Math.floor(Math.random()*2);
-        
+
                     for(var n = 0; n < 2; n++) {
                         var polygon = document.createElementNS(svg.namespaceURI, 'polygon');
-        
+
                         if(rando==0) {
                             if(n==0) {
                                 polygon.point1 = i;
@@ -409,11 +410,11 @@ var refreshDuration = 10000;
                     }
                 }
             }
-        
+
             refresh();
-        
+
         }
-        
+
         function randomize() {
             for(var i = 0; i < points.length; i++) {
                 if(points[i].originX != 0 && points[i].originX != unitWidth*(numPointsX-1)) {
@@ -424,7 +425,7 @@ var refreshDuration = 10000;
                 }
             }
         }
-        
+
         function refresh() {
             randomize();
             for(var i = 0; i < document.querySelector('#bg svg').childNodes.length; i++) {
@@ -438,19 +439,19 @@ var refreshDuration = 10000;
             }
             refreshTimeout = setTimeout(function() {refresh();}, refreshDuration);
         }
-        
+
         function onResize() {
             document.querySelector('#bg svg').remove();
             clearTimeout(refreshTimeout);
             onLoad();
         }
-        
+
         window.onload = onLoad;
         window.onresize = onResize;
-        
+
 // End of Low-poly background animations
 </script>
-        
+
         <div class="footer">
           <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Version <code>0.16</code></p>
         </div>
