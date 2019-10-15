@@ -1,29 +1,24 @@
 <html>
     <head>
             <meta charset="utf-8"/>
-            <link rel="stylesheet" type="text/css" href="style.css">
+            <link rel="stylesheet" type="text/css" href="style/style.css">
             <title>Chicken FM &bull; Your Chicken Station</title>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pnotify/3.0.0/pnotify.js?1568124206"></script>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            <script type="text/javascript" src="pnotify/dist/iife/PNotify.js"></script>
-            <script type="text/javascript" src="pnotify/dist/iife/PNotifyButtons.js"></script>
-            <link href="pnotify/dist/PNotifyBrightTheme.css" rel="stylesheet" type="text/css" />
             <script type="text/javascript" src="/chickenfm.js"></script>
             <link rel="manifest" href="/manifest.json">
-
             <!--Meta tags-->
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
-            <meta name="apple-mobile-web-app-title" content="Weather PWA">
+            <meta name="apple-mobile-web-app-title" content="ChickenFM">
             <link rel="apple-touch-icon" href="/images/icons/icon-152x152.png">
             <meta name="theme-color" content="#0034FF" />
             <meta name="title" content="ChickenFM - Your Chicken Station">
-            <meta name="keywords" content="ChickenFM, chickenfm, chicken fm, chicken, free radio, chickens, good music">
+            <meta name="keywords" content="ChickenFM, chickenfm, chicken fm, chicken, fm, free radio, chickens, good music, free music, ad free">
             <meta name="robots" content="index, follow">
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
             <meta name="language" content="English">
@@ -36,16 +31,16 @@
              <!--OG metatags-->
              <meta property="og:title" content="ChickenFM - Your Chicken Station">
              <meta property="og:description" content="This is ChickenFM, your chicken station. sotp listening to bad music or else you're bald. We play the latest hits ad free!">
-             <meta property="og:image" content="https://chickenfm.ga/images/background.jpg">
-             <meta property="og:url" content="https://chickenfm.ga">
+             <meta property="og:image" content="https://chickenfm.com/images/cover.png">
+             <meta property="og:url" content="https://chickenfm.com">
              <meta property="og:site_name" content="ChickenFM">
 
 
             <!--Twitter meta tags-->
             <meta property="twitter:title" content="ChickenFM">
             <meta property="twitter:description" content="This is ChickenFM, your chicken station. sotp listening to bad music or else you're bald. We play the latest hits ad free!">
-            <meta property="twitter:image" content="https://chickenfm.ga/images/background.jpg">
-            <meta property="twitter:url" content="https://chickenfm.ga">
+            <meta property="twitter:image" content="https://chickenfm.com/images/cover.jpg">
+            <meta property="twitter:url" content="https://chickenfm.com">
             <meta name="twitter:card" content="summary_large_image">
             <meta name="twitter:site" content="@skeppy_chicken">
              <!--Register service worker-->
@@ -58,41 +53,6 @@
                       });
                 });
               };</script>
-            <!--Pnotify to notify you about the developement hihi-->
-            <script>function showStackTopCenter(type) {
-              if (typeof window.stackTopCenter === 'undefined') {
-                window.stackBottomRight = {
-                  'dir1': 'up',
-                  'dir2': 'left',
-                  'firstpos1': 25,
-                  'firstpos2': 25
-                };
-              }
-              var opts = {
-                title: 'Over Here',
-                text: "Check me out. I'm in a different stack.",
-                stack: window.stackBottomRight
-              };
-              switch (type) {
-                case 'error':
-                  opts.title = 'Oh No';
-                  opts.text = 'Watch out for that water tower!';
-                  opts.type = 'error';
-                  break;
-                case 'info':
-                  opts.title = 'Still in developement';
-                  opts.text = 'ChickenFM.com is still in developement. If you experience any issues, send a DM to trashcan#2971 on discord.';
-                  opts.type = 'info';
-                  break;
-                case 'success':
-                  opts.title = 'Good News Everyone';
-                  opts.text = "I've invented a device that bites shiny metal asses.";
-                  opts.type = 'success';
-                  break;
-              }
-              PNotify.alert(opts);
-            }
-            </script>
             <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> -->
 
 
@@ -113,7 +73,8 @@
                       <div id="request"><a href="#" id="myBtn">Request songs</a></div>
                         <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>-->
                         <a href="https://discord.gg/pYFx3xK">Discord Server</a>
-                        <a href="#popup1">Suggest songs</a>
+                        <a href="#suggestsong">Suggest songs</a>
+                        <a onclick="checkStorage()" href="#settings">Settings</a>
                         <a href="https://onlineradiobox.com/nl/chicken/?cs=nl.chicken">OnlineRadioBox</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
@@ -131,7 +92,7 @@
                         }
                         </script>
 
-                        <div id="popup1" class="overlay">
+                        <div id="suggestsong" class="overlay">
                             <div class="popup">
                               <h2>Suggest songs</h2>
                               <a class="close" href="#">&times;</a>
@@ -146,6 +107,16 @@
                                 <!--</form>-->
                               </div>
                             </div>
+                          </div>
+                          <div id="settings" class="overlay">
+                          	<div class="popup">
+                          		<h2>Change stream quality</h2>
+                          		<a class="close" href="#">&times;</a>
+                          		<div class="content">
+                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="radio.mp3"> 256kbps (Desktop)<br>
+                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="mobile.mp3"> 128kbps (Mobile)<br>
+                              </div>
+                          	</div>
                           </div>
 
 
@@ -208,7 +179,7 @@
                 <h5 id="artist" class="artist" style="float:right; color:white;">-</h5><br>
               </div>
               <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
-                <audio id="player" autoplay="false" volume="0"><source src="https://radio.chickenfm.com/radio/8000/radio.mp3?1568647813" type="audio/mpeg"></audio>
+                <audio id="player" autoplay="false" volume="0"></audio>
                   <div style="color:white;width:fit-content;">
                       <div class="togglr"><i class="togl fa fa-play" style="text-align: center;"></i></div>
                       <input id="volumeslider" class="volume displaynone" type="range" min="0" max="100" value="50" step="1">
@@ -217,243 +188,13 @@
               </div>
 
 
-              <script type="text/javascript">
-                function playing() {
-                  $.getJSON('https://radio.chickenfm.com/api/nowplaying/1', (data) => {
-                  var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
-                  var track = data.now_playing.song.title;
-                  var artist = data.now_playing.song.artist;
-                  document.getElementById("track").innerHTML = track.toString();
-                  document.getElementById("artist").innerHTML = artist.toString();
-                  //var dj = data.live.streamer_name + ":";
-                  var djstat = data.live.streamer_name;
-                  document.getElementById("dj").innerHTML = dj.toString()
-                  if(djstat == "") {
-                    document.getElementById("dj").innerHTML = "AutoDJ";
-                    //document.getElementById("request").innerHTML = `<a href="#" id="myBtn">Request songs</a>`;
-                  } else {
-                    document.getElementById("dj").innerHTML = djstat.toString();
-                    //document.getElementById("request").innerHTML = `<a href="#popup1">Suggest songs</a>`;
+              <script type="text/javascript" src="scripts/player.js"></script>
+              <script src="scripts/background.js"></script>
+              <script type="text/javascript" src="scripts/settings.js"></script>
 
-                  }
-
-                  coversrc = data.now_playing.song.art;
-                  //imagesrc = cover.toString();
-                  //imagehtml = '<img src="'+imagesrc+'"></img>'
-                  image = document.getElementById('coverimg');
-                  image.src = coversrc.toString();
-                  //image.innerHTML = imagehtml.toString()
-                  //image.innerHTML = cover.toString();
-
-                  // When audio starts playing...
-                  if ('mediaSession' in navigator) {
-                  navigator.mediaSession.metadata = new MediaMetadata({
-                      title: track,
-                      artist: artist,
-                      album: 'ChickenFM',
-                      artwork: [
-                          { src: coversrc.toString(), type: 'image/png' },
-                    ]
-                      });
-                  navigator.mediaSession.setActionHandler('play', function(){
-                    playRadio()
-                  });
-                  navigator.mediaSession.setActionHandler('pause', function(){
-                    pauseRadio()
-                      });
-                    }
-                 });
-                 setTimeout(playing, 5000);
-               } 	playing();
-
-               var stream = document.getElementById("player");
-               stream.pause()
-               //loadRadio()
-               volumeslider = document.getElementById("volumeslider");
-               volumeslider.addEventListener("mousemove", setvolume);
-              function setvolume(){
-	              stream.volume = volumeslider.value / 100;
-              }
-               showStackTopCenter('info');
-
-              $('.togl').click(function(){
-                toggleRadio();
-              });
-              function toggleRadio(){
-                if (stream.paused){
-                  playRadio();
-                } else {
-                  pauseRadio();
-                }
-              }
-              function playRadio(){
-                stream.src = "https://radio.chickenfm.com/radio/8000/radio.mp3?1568647813";
-                //stream.volume = 0;
-
-                $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
-                stream.play().then(function() {
-                  stream.volume = 0.6;
-                  $('.togl').attr("class", "togl fa fa-pause");
-                  //Pnotify
-                  $('.volume').attr("class", "volume")
-                  stream.volume = volumeslider.value / 100;
-
-
-                }).catch(function() {
-                  pauseRadio();
-                });
-              }
-
-              function pauseRadio(){
-                stream.pause();
-                stream.volume = 0;
-                stream.src = "";
-                $('.togl').attr("class", "togl fa fa-play");
-                //Pnotify
-                $('.volume').attr("class", "volume displaynone")
-              }
-
-
-              function volumeChange(){
-                volumeslider = document.getElementById("volumeslider");
-                stream.volume = volumeslider.value / 100;
-                setTimeout(volumeChange, 1000);
-              } volumeChange()
-
-             /* $(".reqln").click(function(){
-                $(".modal").show()
-              })*/
-              </script>
-              <script>/*************************************/
-// Low-poly Background animations
-
-var refreshDuration = 10000;
-        var refreshTimeout;
-        var numPointsX;
-        var numPointsY;
-        var unitWidth;
-        var unitHeight;
-        var points;
-
-        function onLoad()
-        {
-            var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            svg.setAttribute('width',window.outerWidth);
-            svg.setAttribute('height',window.outerHeight);
-            document.querySelector('#bg').appendChild(svg);
-
-            var unitSize = (window.innerWidth+window.innerHeight)/15;
-            numPointsX = Math.ceil(window.innerWidth/unitSize)+1;
-            numPointsY = Math.ceil(window.innerHeight/unitSize)+1;
-            unitWidth = Math.ceil(window.innerWidth/(numPointsX-1));
-            unitHeight = Math.ceil(window.innerHeight/(numPointsY-1));
-
-            points = [];
-
-            for(var y = 0; y < numPointsY; y++) {
-                for(var x = 0; x < numPointsX; x++) {
-                    points.push({x:unitWidth*x, y:unitHeight*y, originX:unitWidth*x, originY:unitHeight*y});
-                }
-            }
-
-            randomize();
-
-            for(var i = 0; i < points.length; i++) {
-                if(points[i].originX != unitWidth*(numPointsX-1) && points[i].originY != unitHeight*(numPointsY-1)) {
-                    var topLeftX = points[i].x;
-                    var topLeftY = points[i].y;
-                    var topRightX = points[i+1].x;
-                    var topRightY = points[i+1].y;
-                    var bottomLeftX = points[i+numPointsX].x;
-                    var bottomLeftY = points[i+numPointsX].y;
-                    var bottomRightX = points[i+numPointsX+1].x;
-                    var bottomRightY = points[i+numPointsX+1].y;
-
-                    var rando = Math.floor(Math.random()*2);
-
-                    for(var n = 0; n < 2; n++) {
-                        var polygon = document.createElementNS(svg.namespaceURI, 'polygon');
-
-                        if(rando==0) {
-                            if(n==0) {
-                                polygon.point1 = i;
-                                polygon.point2 = i+numPointsX;
-                                polygon.point3 = i+numPointsX+1;
-                                polygon.setAttribute('points',topLeftX+','+topLeftY+' '+bottomLeftX+','+bottomLeftY+' '+bottomRightX+','+bottomRightY);
-                            } else if(n==1) {
-                                polygon.point1 = i;
-                                polygon.point2 = i+1;
-                                polygon.point3 = i+numPointsX+1;
-                                polygon.setAttribute('points',topLeftX+','+topLeftY+' '+topRightX+','+topRightY+' '+bottomRightX+','+bottomRightY);
-                            }
-                        } else if(rando==1) {
-                            if(n==0) {
-                                polygon.point1 = i;
-                                polygon.point2 = i+numPointsX;
-                                polygon.point3 = i+1;
-                                polygon.setAttribute('points',topLeftX+','+topLeftY+' '+bottomLeftX+','+bottomLeftY+' '+topRightX+','+topRightY);
-                            } else if(n==1) {
-                                polygon.point1 = i+numPointsX;
-                                polygon.point2 = i+1;
-                                polygon.point3 = i+numPointsX+1;
-                                polygon.setAttribute('points',bottomLeftX+','+bottomLeftY+' '+topRightX+','+topRightY+' '+bottomRightX+','+bottomRightY);
-                            }
-                        }
-                        polygon.setAttribute('fill','rgba(0,0,0,'+(Math.random()/3)+')');
-                        var animate = document.createElementNS('http://www.w3.org/2000/svg','animate');
-                        animate.setAttribute('fill','freeze');
-                        animate.setAttribute('attributeName','points');
-                        animate.setAttribute('dur',refreshDuration+'ms');
-                        animate.setAttribute('calcMode','linear');
-                        polygon.appendChild(animate);
-                        svg.appendChild(polygon);
-                    }
-                }
-            }
-
-            refresh();
-
-        }
-
-        function randomize() {
-            for(var i = 0; i < points.length; i++) {
-                if(points[i].originX != 0 && points[i].originX != unitWidth*(numPointsX-1)) {
-                    points[i].x = points[i].originX + Math.random()*unitWidth-unitWidth/2;
-                }
-                if(points[i].originY != 0 && points[i].originY != unitHeight*(numPointsY-1)) {
-                    points[i].y = points[i].originY + Math.random()*unitHeight-unitHeight/2;
-                }
-            }
-        }
-
-        function refresh() {
-            randomize();
-            for(var i = 0; i < document.querySelector('#bg svg').childNodes.length; i++) {
-                var polygon = document.querySelector('#bg svg').childNodes[i];
-                var animate = polygon.childNodes[0];
-                if(animate.getAttribute('to')) {
-                    animate.setAttribute('from',animate.getAttribute('to'));
-                }
-                animate.setAttribute('to',points[polygon.point1].x+','+points[polygon.point1].y+' '+points[polygon.point2].x+','+points[polygon.point2].y+' '+points[polygon.point3].x+','+points[polygon.point3].y);
-                animate.beginElement();
-            }
-            refreshTimeout = setTimeout(function() {refresh();}, refreshDuration);
-        }
-
-        function onResize() {
-            document.querySelector('#bg svg').remove();
-            clearTimeout(refreshTimeout);
-            onLoad();
-        }
-
-        window.onload = onLoad;
-        window.onresize = onResize;
-
-// End of Low-poly background animations
-</script>
 
         <div class="footer">
-          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Version <code>0.16</code></p>
+          <p>Made by <a href="https://twitter.com/skeppy_chicken">TheChicken</a>. Version <code>0.17</code></p>
         </div>
     </body>
 </html>
