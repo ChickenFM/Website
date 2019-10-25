@@ -9,6 +9,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <script type="text/javascript" src="/chickenfm.js"></script>
+            <link rel="stylesheet" href="style/animations.css">
             <link rel="manifest" href="/manifest.json">
             <!--add favicon-->
             <link rel="shortcut icon" type="image/png" href="/images/icons/icon_256x256.png"/>
@@ -66,18 +67,31 @@
                 }
                 </script>
 
-
     </head>
-    <body onload="playing()">
-<div id="bg"></div>
+      <body onload="playing()">
+        <style>
+        #loading {
+        	position: fixed;
+        	left: 0px;
+        	top: 0px;
+        	width: 100%;
+        	height: 100%;
+        	z-index: 9999;
+          background-color: white;
+        }
+        .loadinganimation {
+        }
+        </style>
+        <div id="loading"><div class="loader07"></div></div>
+              <div id="bg"></div>
                     <div class="topnav" id="myTopnav">
-                        <a href="index.html" class="active">Home</a>
+                        <a href="/" class="active">Home</a>
                       <div id="request"><a href="#" id="myBtn">Request songs</a></div>
                         <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>-->
-                        <a href="https://l.chickenfm.com/discord">Discord Server</a>
+                        <a target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
                         <a href="#suggestsong">Suggest songs</a>
                         <a onclick="checkStorage()" href="#settings">Settings</a>
-                        <a href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
+                        <a target="_blank" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
                         </a>
@@ -172,7 +186,7 @@
 
             <div class="player player-body">
               <!--<div id="coverimg" class="djimage"></div>-->
-              <img class="djimage" id="coverimg" style="float:left;" src="s" />
+              <img class="djimage" id="coverimg" style="float:left;" src="" />
               <!--<h3 style="color:#ffffff;">ChickenFM is unfortunately down. We will be back on air as soon as possible</h3>-->
               <!--<iframe src="http://157.245.33.91/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 100%; min-height: 150px; border: 0;"></iframe>-->
               <div class="nowplaying">
@@ -198,5 +212,17 @@
         <div class="footer">
           <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>1</code>. View the source code on <a target="_blank" href="https://l.chickenfm.com/github">GitHub</a></p>
         </div>
+        <script type="text/javascript">
+        jQuery(document).ready(function() {
+          backGone()
+        });
+
+        function backGone() {
+          setTimeout(function(){
+            jQuery('#loading').fadeOut(300);
+          }, 1000);
+        }
+
+        </script>
     </body>
 </html>
