@@ -7,10 +7,13 @@
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <script type="text/javascript" src="/chickenfm.js"></script>
             <link rel="stylesheet" href="style/animations.css">
+            <link rel="stylesheet" href="style/popup.css">
             <link rel="manifest" href="/manifest.json">
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
             <!--add favicon-->
             <link rel="shortcut icon" type="image/png" href="/images/icons/icon_256x256.png"/>
             <!--Meta tags-->
@@ -56,7 +59,6 @@
                       });
                 });
               };</script>
-            <!-- <iframe src="https://radio.viberadio.pw/public/chickenfm" frameborder="0" allowtransparency="true" style="background-image: url('https://pbs.twimg.com/media/D_9RmzaWwAAzhWM?format=jpg&name=900x900'); width: 100%; height: 100%; min-height: 100%;"></iframe> -->
 
 
             <script type="text/javascript">
@@ -68,7 +70,7 @@
                 </script>
 
     </head>
-      <body onload="playing()">
+      <body onload="playing();">
         <style>
         #loading {
         	position: fixed;
@@ -79,18 +81,16 @@
         	z-index: 9999;
           background-color: white;
         }
-        .loadinganimation {
-        }
         </style>
         <div id="loading"><div class="loader07"></div></div>
               <div id="bg"></div>
                     <div class="topnav" id="myTopnav">
                         <a href="/" class="active">Home</a>
-                      <div id="request"><a href="#" id="myBtn">Request songs</a></div>
+                      <div id="request"><a href="#" class="triggerSongreq">Request songs</a></div>
                         <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>-->
                         <a target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
                         <a href="#suggestsong">Suggest songs</a>
-                        <a onclick="checkStorage()" href="#settings">Settings</a>
+                        <a onclick="checkStorage()" href="#" class="triggerSettings">Settings</a>
                         <a target="_blank" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
@@ -136,53 +136,25 @@
                           	</div>
                           </div>
 
+                          <div class="settings">
+                            <div class="settings-content">
+                                <span class="close-settings">×</span>
+                                <h1>Settings</h1>
+                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="radio.mp3"> 256kbps (Desktop)<br>
+                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="mobile.mp3"> 128kbps (Mobile)<br>
+                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="mobileplus.mp3"> 96kbps (Mobile+)<br>
+                            </div>
+                        </div>
+                        <script src="scripts/popups/settingspopup.js"></script>
 
-            <!-- The Modal -->
-            <div id="myModal" class="songreq">
-
-              <!-- Modal content -->
-              <div class="songreq-content">
-                <div class="songreq-header">
-                  <span class="close">&times;</span>
-                  <h2>Request songs</h2>
-                </div>
-                <div class="songreq-body">
-                      <iframe src="https://radio.chickenfm.com/public/chickenfm/embed-requests" frameborder="0" allowtransparency="true" style="width: 100%; height: 75%; border: 0;"></iframe>
-                </div>
-                <div class="songreq-footer">
-                  <h3>ChickenFM</h3>
-                </div>
-              </div>
-
-            </div>
-                    <script>
-                                // Get the modal
-                                var modal = document.getElementById("myModal");
-
-                                // Get the button that opens the modal
-                                var btn = document.getElementById("myBtn");
-
-                                // Get the <span> element that closes the modal
-                                var span = document.getElementsByClassName("close")[0];
-
-                                // When the user clicks the button, open the modal
-                                btn.onclick = function() {
-                                  modal.style.display = "block";
-                                }
-
-                                // When the user clicks on <span> (x), close the modal
-                                span.onclick = function() {
-                                  modal.style.display = "none";
-                                }
-
-                                // When the user clicks anywhere outside of the modal, close it
-                                window.onclick = function(event) {
-                                  if (event.target == modal) {
-                                    modal.style.display = "none";
-                                  }
-                                }
-                                </script>
-
+                          <div class="songreq">
+                            <div class="songreq-content">
+                                <span class="songreq-close-button">&times;</span>
+                                <h1>Request songs</h1>
+                                <iframe src="https://radio.chickenfm.com/public/chickenfm/embed-requests" frameborder="0" allowtransparency="true" style="width: 100%; height: 85%; border: 0;"></iframe>
+                            </div>
+                          </div>
+                    <script src="scripts/popups/songrequest.js"></script>
 
 
             <div class="player player-body">
@@ -200,8 +172,7 @@
                   <div style="color:white;width:fit-content;">
                       <div class="togglr"><i class="togl fa fa-play" style="text-align: center;"></i></div>
                       <input id="volumeslider" class="volume displaynone" type="range" min="0" max="100" value="50" step="1">
-              </div>
-
+                </div>
               </div>
 
 

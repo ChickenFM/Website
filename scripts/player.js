@@ -1,8 +1,11 @@
   function playing() {
-    $.getJSON('https://radio.chickenfm.com/api/nowplaying/1', (data) => {
+    axios.get('https://radio.chickenfm.com/api/nowplaying/1')
+    .then(res =>{
+      var data = res.data
     var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
     var track = data.now_playing.song.title;
     var artist = data.now_playing.song.artist;
+
     document.getElementById("track").innerHTML = track.toString();
     document.getElementById("artist").innerHTML = artist.toString();
     //var dj = data.live.streamer_name + ":";
@@ -14,7 +17,6 @@
     } else {
       document.getElementById("dj").innerHTML = djstat.toString();
       //document.getElementById("request").innerHTML = `<a href="#popup1">Suggest songs</a>`;
-
     }
 
     coversrc = data.now_playing.song.art;
