@@ -166,6 +166,7 @@
                 <span class="dj" id="dj" style="float:right; color:white;">Now Playing:</span><br>
                 <h3 id="track" class="track" style="float:right; color:white;">-</h3><br>
                 <h5 id="artist" class="artist" style="float:right; color:white;">-</h5><br>
+                <h5 id="time" style="float:right; color:white;"><span id="elapsed"></span> / <span id="duration"></span></h5><br>            
               </div>
               <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
                 <audio id="player" autoplay="false" volume="0"></audio>
@@ -187,6 +188,7 @@
         <script type="text/javascript">
         jQuery(document).ready(function() {
           backGone()
+          playingNew()
         });
 
         function backGone() {

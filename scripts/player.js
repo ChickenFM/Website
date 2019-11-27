@@ -1,7 +1,6 @@
-  function playing() {
-    axios.get('https://radio.chickenfm.com/api/nowplaying/1')
-    .then(res =>{
-      var data = res.data
+  
+  function updateNowplaying(data) {
+    //var data = res.data
     var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
     var track = data.now_playing.song.title;
     var artist = data.now_playing.song.artist;
@@ -44,9 +43,71 @@
       pauseRadioKey()
         });
       }
-   });
-   setTimeout(playing, 5000);
- } 	playing();
+
+   //setTimeout(playing, 5000);
+ } 	//playing();
+
+ function playingNew() {
+   if("WebSocket" in window) {
+    var ws = new WebSocket("wss://radio.chickenfm.com/api/live/nowplaying/chickenfm");
+
+    ws.onmessage = function(evt) {
+      
+      var message = evt.data;
+      nowPlaying = JSON.parse(message);
+      updateNowplaying(nowPlaying)
+      elapsed = JSON.parse(message).now_playing.elapsed
+      var played_at = nowPlaying.now_playing.played_at
+      var duration = nowPlaying.now_playing.duration
+      if(nowPlaying.live.is_live == true)
+        return countTime(false, false, true)
+      if(countTime.interval)
+          clearTimeout(countTime.interval);
+      
+      countTime(played_at, duration)
+     }
+   }
+
+ }
+
+ function countTime(played_at, total, djlive){
+  if(djlive){
+    //document.getElementById('time').innerHTML = `N.A.`
+    document.getElementById('elapsed').innerHTML = 'N.A.'
+    document.getElementById("duration").innerHTML = 'N.A.'
+  }
+  var ts = Math.round((new Date()).getTime() / 1000);
+  //var seconds = (date2 - date1) / 1000
+  var seconds = ts - played_at
+  //console.log(seconds)
+  //second = parseInt(second)
+  if(seconds < 0)
+    seconds = 0
+  second = seconds + 1
+  document.getElementById('elapsed').innerHTML = getTime(second * 1000)
+  document.getElementById("duration").innerHTML = getTime(total * 1000)
+  countTime.interval = setTimeout(function(){ countTime(played_at, total); }, 1000);
+}
+
+ var getTime = (millisec) => {
+  // Credit: https://stackoverflow.com/questions/19700283/how-to-convert-time-milliseconds-to-hours-min-sec-format-in-javascript
+  var seconds = (millisec / 1000).toFixed(0);
+  var minutes = Math.floor(seconds / 60);
+  var hours = "";
+  if (minutes > 59) {
+    hours = Math.floor(minutes / 60);
+    hours = (hours >= 10) ? hours : "0" + hours;
+    minutes = minutes - (hours * 60);
+    minutes = (minutes >= 10) ? minutes : "0" + minutes;
+  }
+  // Normally I'd give notes here, but I actually don't understand how this code works.
+  seconds = Math.floor(seconds % 60);
+  seconds = (seconds >= 10) ? seconds : "0" + seconds;
+  if (hours != "") {
+    return hours + ":" + minutes + ":" + seconds;
+  }
+  return minutes + ":" + seconds;
+}
 
  var stream = document.getElementById("player");
  stream.pause()
