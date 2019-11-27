@@ -59,8 +59,12 @@
       elapsed = JSON.parse(message).now_playing.elapsed
       var played_at = nowPlaying.now_playing.played_at
       var duration = nowPlaying.now_playing.duration
-      if(nowPlaying.live.is_live == true)
-        return countTime(false, false, true)
+      if(nowPlaying.live.is_live == true){
+        if(countTime.interval)clearTimeout(countTime.interval);
+        document.getElementById('elapsed').innerHTML = 'N.A.'
+        document.getElementById("duration").innerHTML = 'N.A.'
+        return;
+      }
       if(countTime.interval)
           clearTimeout(countTime.interval);
       
@@ -70,12 +74,7 @@
 
  }
 
- function countTime(played_at, total, djlive){
-  if(djlive){
-    //document.getElementById('time').innerHTML = `N.A.`
-    document.getElementById('elapsed').innerHTML = 'N.A.'
-    document.getElementById("duration").innerHTML = 'N.A.'
-  }
+ function countTime(played_at, total){
   var ts = Math.round((new Date()).getTime() / 1000);
   //var seconds = (date2 - date1) / 1000
   var seconds = ts - played_at
