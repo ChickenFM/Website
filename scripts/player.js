@@ -1,4 +1,11 @@
-  
+if(!localStorage.getItem('radioStation')) {
+  localStorage.setItem('radioStation', 'https://radio.chickenfm.com/radio/8000/radio.mp3')
+}
+if(!localStorage.getItem('api')) {
+  localStorage.setItem('api', 'chickenfm')
+}
+var api = localStorage.getItem('api')
+
   function updateNowplaying(data) {
     //var data = res.data
     var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
@@ -46,10 +53,10 @@
 
    //setTimeout(playing, 5000);
  } 	//playing();
-
- function playingNew() {
+ var ws;
+ function playingNew(api) {
    if("WebSocket" in window) {
-    var ws = new WebSocket("wss://radio.chickenfm.com/api/live/nowplaying/chickenfm");
+    ws = new WebSocket("wss://radio.chickenfm.com/api/live/nowplaying/"+api);
 
     ws.onmessage = function(evt) {
       
@@ -74,6 +81,8 @@
 
  }
 
+ //playingNew(api)
+
  function countTime(played_at, total){
   var ts = Math.round((new Date()).getTime() / 1000);
   //var seconds = (date2 - date1) / 1000
@@ -82,9 +91,12 @@
   //second = parseInt(second)
   if(seconds < 0)
     seconds = 0
-  second = seconds + 1
-  document.getElementById('elapsed').innerHTML = getTime(second * 1000)
-  document.getElementById("duration").innerHTML = getTime(total * 1000)
+  
+  if(seconds !== total){
+    second = seconds + 1
+    document.getElementById('elapsed').innerHTML = getTime(second * 1000)
+    document.getElementById("duration").innerHTML = getTime(total * 1000)
+  }
   countTime.interval = setTimeout(function(){ countTime(played_at, total); }, 1000);
 }
 
@@ -128,13 +140,8 @@ function toggleRadio(){
 }
 function playRadio(){
   stream.src = "";
-  var streamQuality = localStorage.getItem('streamQuality');
-  if(streamQuality) {
-    var streamLink = "https://radio.chickenfm.com/radio/8000/"+streamQuality;
-  } else {
-    var streamLink = "https://radio.chickenfm.com/radio/8000/radio.mp3";
-  }
-  stream.src = streamLink;
+
+  stream.src = localStorage.getItem('radioStation');
   //stream.volume = 0;
 
   $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");

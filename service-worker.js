@@ -7,8 +7,15 @@ const CACHE_NAME = 'static-cache-v1';
 const FILES_TO_CACHE = [
     '/offline.html',
     '/index.html',
-    '/style.css',
-    '/popup.html'
+    '/style/style.css',
+    '/style/animations.css',
+    '/scripts/player.js',
+    '/scripts/settings.js',
+    '/scripts/install.js',
+    '/scripts/background.js',
+    '/scripts/popups/settingspopup.js',
+    '/scripts/popups/songrequest.js',
+    '/favicon.ico'
   ];
 
 

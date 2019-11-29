@@ -13,7 +13,6 @@
             <link rel="stylesheet" href="style/animations.css">
             <link rel="stylesheet" href="style/popup.css">
             <link rel="manifest" href="/manifest.json">
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
             <!--add favicon-->
             <link rel="shortcut icon" type="image/png" href="/images/icons/icon_256x256.png"/>
             <!--Meta tags-->
@@ -60,15 +59,6 @@
                 });
               };</script>
 
-
-            <script type="text/javascript">
-                // Popup window code
-                function newPopup(url) {
-                        popupWindow = window.open(
-                                url,'popUpWindow','height=750,width=500,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
-                }
-                </script>
-
     </head>
       <body onload="playing();">
         <style>
@@ -90,7 +80,7 @@
                         <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>-->
                         <a target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
                         <a href="#suggestsong">Suggest songs</a>
-                        <a onclick="checkStorage()" href="#" class="triggerSettings">Settings</a>
+                        <a onclick="setItems()" href="#" class="triggerSettings">Settings</a>
                         <a target="_blank" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
@@ -124,28 +114,25 @@
                               </div>
                             </div>
                           </div>
-                          <div id="settings" class="overlay">
-                          	<div class="popup">
-                          		<h2>Change stream quality</h2>
-                          		<a class="close" href="#">&times;</a>
-                          		<div class="content">
-                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="radio.mp3"> 256kbps (Desktop)<br>
-                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="mobile.mp3"> 128kbps (Mobile)<br>
-                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="mobileplus.mp3"> 96kbps (Mobile+)<br>
-                              </div>
-                          	</div>
-                          </div>
 
                           <div class="settings">
-                            <div class="settings-content">
+                            <div class="settings-content" id="settings-content">
                                 <span class="close-settings">×</span>
                                 <h1>Settings</h1>
-                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="radio.mp3"> 256kbps (Desktop)<br>
-                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="mobile.mp3"> 128kbps (Mobile)<br>
-                                <input type="radio" class="streamRadio" onclick="streamQuality()" name="streamQuality" value="mobileplus.mp3"> 96kbps (Mobile+)<br>
+                                <h2>Station</h2>
+                                <div id="changeStationContent"></div>
                             </div>
                         </div>
                         <script src="scripts/popups/settingspopup.js"></script>
+
+                        <div class="offlinemsg">
+                          <div class="offlinemsg-content">
+                              <h1>Uh oh!</h1>
+                              <h3>It seems like you're offline!</h3>
+                              <h3>Connect back to the internet to listen to ChickenFM</h3>
+                          </div>
+                      </div>
+                      <script src="scripts/popups/offline.js"></script>
 
                           <div class="songreq">
                             <div class="songreq-content">
@@ -183,13 +170,17 @@
 
 
         <div class="footer">
-          <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>1</code>. View the source code on <a target="_blank" href="https://l.chickenfm.com/github">GitHub</a></p>
+          <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>2</code>. View the source code on <a target="_blank" href="https://l.chickenfm.com/github">GitHub</a></p>
         </div>
         <script type="text/javascript">
         jQuery(document).ready(function() {
+          if(!localStorage.getItem('api')) {
+              localStorage.setItem('api', 'chickenfm')
+            }
+          var api = localStorage.getItem('api')
+          playingNew(api)
           backGone()
-          playingNew()
-        });
+          });
 
         function backGone() {
           setTimeout(function(){

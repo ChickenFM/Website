@@ -192,11 +192,14 @@ top: 50%;*/
 .nowplaying {
   width: 15em;
 }
+.empty {
+  padding: 0px;
+  }
 }
 
 
-.empty1 {
-padding: 1em;
+.empty {
+padding: 3em;
 }
 
 .togglr {
@@ -251,10 +254,6 @@ text-align:center;
 
 div {
   /*display: block;*/
-}
-
-.empty {
-padding: 50px;
 }
 
 .player-body {
