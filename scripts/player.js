@@ -40,7 +40,7 @@ var api = localStorage.getItem('api')
         artist: artist,
         album: 'ChickenFM',
         artwork: [
-            { src: coversrc.toString(), type: 'image/png' },
+            { src: coversrc.toString(), type: 'image/jpg' },
       ]
         });
     navigator.mediaSession.setActionHandler('play', function(){
@@ -76,6 +76,13 @@ var api = localStorage.getItem('api')
           clearTimeout(countTime.interval);
       
       countTime(played_at, duration)
+     }
+     ws.onerror = () => {
+      ws.close()
+      setTimeout(function(){playingNew(localStorage.getItem('radioStation'))}, 1000)
+     }
+     ws.onclose = () => {
+      setTimeout(function(){playingNew(localStorage.getItem('radioStation'))}, 1000)
      }
    }
 
