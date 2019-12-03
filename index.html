@@ -79,8 +79,8 @@
                       <div id="request"><a href="#" class="triggerSongreq">Request songs</a></div>
                         <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>-->
                         <a target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
-                        <a href="#suggestsong">Suggest songs</a>
-                        <a onclick="setItems()" href="#" class="triggerSettings">Settings</a>
+                        <a href="javascript:void(0);" class="triggerMessagepop">Suggest songs</a>
+                        <a onclick="setItems()" href="javascript:void(0);" class="triggerSettings">Settings</a>
                         <a target="_blank" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
@@ -98,22 +98,13 @@
                         }
                         </script>
 
-                        <div id="suggestsong" class="overlay">
-                            <div class="popup">
-                              <h2>Suggest songs</h2>
-                              <a class="close" href="#">&times;</a>
-                              <div class="content">
-                                <!--<form onsubmit="sendMessage()">-->
-                                <label for="name">Name: </label><br>
-                                <input id="name" type="text" class="request" autofocus="autofocus" placeholder="Name" required="requeired" autocomplete="off"><br>
-                                <label for="name">Song/message: </label><br>
-                                <input id="message" type="text" class="request" required="required" placeholder="Song/Message" autocomplete="off"><br><br>
-                                <div id="submiterror"></div>
-                                <div id="submitreq"><button type="button" onclick="sendMessage()" value="Send message!">Send message!</button></div>
-                                <!--</form>-->
-                              </div>
-                            </div>
+                        <div class="messagepop">
+                          <div class="messagepop-content">
+                              <span class="close-messagepop">×</span>
+                              <iframe src="/requestSong.html" frameborder="0" allowtransparency="true" style="height: 15em; width: auto;" ></iframe>
                           </div>
+                      </div>
+                      <script src="scripts/popups/message.js"></script>
 
                           <div class="settings">
                             <div class="settings-content" id="settings-content">

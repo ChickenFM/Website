@@ -1,6 +1,15 @@
+function sendMessage() {
+   $("#my-form").submit(function(e) {
+      e.preventDefault();
+    
+      var $form = $(this);
+      $.post($form.attr("action"), $form.serialize()).then(function() {
+        alert("Thank you!");
+      });
+    });
+}
 
-
-function sendMessage(){
+/*function sendMessage(){
    var msg = document.getElementById("message").value;
    console.log(msg.value);
    var name = document.getElementById("name").value;
@@ -25,4 +34,4 @@ function sendMessage(){
  document.getElementById("submiterror").innerHTML = "";
 
 }
-}
+}*/
