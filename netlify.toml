@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/mp3"
+  to = "https://l.chickenfm.com/mobilemp3"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/lizzo"
+  to = "https://l.chickenfm.com/lizzoradio"
+  status = 302
+  force = true
