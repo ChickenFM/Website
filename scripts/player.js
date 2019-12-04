@@ -78,11 +78,10 @@ var api = localStorage.getItem('api')
       countTime(played_at, duration)
      }
      ws.onerror = () => {
-      ws.close()
-      setTimeout(function(){playingNew(localStorage.getItem('radioStation'))}, 1000)
+      toggleOfflineModal()
      }
      ws.onclose = () => {
-      setTimeout(function(){playingNew(localStorage.getItem('radioStation'))}, 1000)
+      //toggleOfflineModal()
      }
    }
 

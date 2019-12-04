@@ -12,6 +12,7 @@ function windowOnClick(event) {
         toggleMsgModal();
     }
 }
+//focus()
 var listener = addEventListener('blur', function() {
 	if(document.activeElement === document.getElementById('messageFrame')) {
         console.log('e')
