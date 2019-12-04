@@ -99,7 +99,7 @@ var api = localStorage.getItem('api')
     seconds = 0
   
   if(seconds !== total){
-    second = seconds + 1
+    second = seconds
     document.getElementById('elapsed').innerHTML = getTime(second * 1000)
     document.getElementById("duration").innerHTML = getTime(total * 1000)
   }
