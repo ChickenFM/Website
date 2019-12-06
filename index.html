@@ -61,7 +61,7 @@
               };</script>
 
     </head>
-      <body onload="playing();">
+      <body>
         <style>
         #loading {
         	position: fixed;
@@ -151,6 +151,9 @@
                                 <h1>Settings</h1>
                                 <h2>Station</h2>
                                 <div id="changeStationContent"></div>
+                                <h2>Background animations</h2>
+                                <label><input type="radio" class="changeBackground" onclick="backgroundChange()" name="backgroundChanger" value="true"> On</label><br>
+                                <label><input type="radio" class="changeBackground" onclick="backgroundChange()" name="backgroundChanger" value="false"> Off</label>
                             </div>
                         </div>
                         <script src="scripts/popups/settingspopup.js"></script>
@@ -200,7 +203,7 @@
 
 
         <div class="footer">
-          <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>2</code>. View the source code on <a target="_blank" href="https://l.chickenfm.com/github">GitHub</a>. Hosted by <a href="https://netlify.com">Netlify</a>.</p>
+          <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>3</code>. View the source code on <a target="_blank" href="https://l.chickenfm.com/github">GitHub</a>. Hosted by <a href="https://netlify.com">Netlify</a>.</p>
         </div>
         <script type="text/javascript">
         jQuery(document).ready(function() {

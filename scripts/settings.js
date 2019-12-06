@@ -32,6 +32,10 @@ window.addEventListener('storage', function(e) {
 
 function setItems(){
   //checkStorage()
+  var checkedBackgroundRadio = localStorage.getItem('backgroundAnimation');
+  if (checkedBackgroundRadio) {
+    $('input[value="'+checkedBackgroundRadio+'"]').attr("checked", '');
+  }
   var div = document.getElementById('changeStationContent')
   div.innerHTML = ''
   axios.get('https://radio.chickenfm.com/api/stations')
@@ -58,5 +62,25 @@ function searchMountpoint(nameKey, myArray){
       if (myArray[i].is_default === nameKey) {
           return myArray[i];
       }
+  }
+}
+
+function backgroundChange(){
+  var backgroundChanger = document.getElementsByName('backgroundChanger');
+
+  for (var i = 0, length = backgroundChanger.length; i < length; i++)
+  {
+   if (backgroundChanger[i].checked)
+   {
+    var backgroundValue = backgroundChanger[i].value
+    localStorage.setItem('backgroundAnimation', backgroundValue)
+    if(backgroundValue == 'true'){
+      onLoad()
+    } else {
+      clearTimeout(refreshTimeout);
+      document.querySelector('#bg svg').remove();
+    }
+    break;
+   }
   }
 }
