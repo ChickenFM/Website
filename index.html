@@ -9,6 +9,7 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
             <script type="text/javascript" src="/chickenfm.js"></script>
             <link rel="stylesheet" href="style/animations.css">
             <link rel="stylesheet" href="style/popup.css">
@@ -74,10 +75,10 @@
         </style>
         <div id="loading"><div class="loader07"></div></div>
               <div id="bg"></div>
-                    <div class="topnav" id="myTopnav">
+                    <!--<div class="topnav" id="myTopnav">
                         <a href="/" class="active">Home</a>
                       <div id="request"><a href="#" class="triggerSongreq">Request songs</a></div>
-                        <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>-->
+                        <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>
                         <a target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
                         <a href="javascript:void(0);" class="triggerMessagepop">Suggest songs</a>
                         <a onclick="setItems()" href="javascript:void(0);" class="triggerSettings">Settings</a>
@@ -85,7 +86,44 @@
                         <a href="javascript:void(0);" class="icon" onclick="topnav()">
                           <i class="fa fa-bars"></i>
                         </a>
-                    </div>
+                    </div>-->
+
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                      <a class="navbar-brand" href="javascript:void(0)"><img src="/images/icons/cover_small.png" width="80"></a>
+                      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                    
+                      <div class="collapse navbar-collapse" id="navb">
+                        <ul class="navbar-nav mr-auto">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="/">Home</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link triggerSongreq" href="javascript:void(0)">Request songs</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link triggerMessagepop" href="javascript:void(0);">Send a message</a>
+                            </li>
+                          <li class="nav-item">
+                            <a class="nav-link" target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link triggerSettings" onclick="setItems()" href="javascript:void(0);">Settings</a>
+                          </li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                Where to listen
+                              </a>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
+                                <a class="dropdown-item" href="http://www.internet-radio.com/station/chickenfm">Internet Radio</a>
+                              </div>
+                            </li>
+                        </ul>
+                      </div>
+                    </nav>
+
                   <div class="empty"></div>
                     <script>
                         function topnav() {
