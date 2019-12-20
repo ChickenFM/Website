@@ -9,3 +9,9 @@
   to = "https://l.chickenfm.com/lizzoradio"
   status = 302
   force = true
+
+[[redirects]]
+  from = "/christmasmp3"
+  to = "https://l.chickenfm.com/christmas"
+  status = 302
+  force = true
