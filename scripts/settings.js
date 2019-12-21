@@ -10,7 +10,7 @@ function changeStation() {
     var id = radioStationChanger[i].id
     localStorage.setItem('api', id)
     ws.close()
-    setTimeout(function(){playingNew(id)}, 100)
+    //setTimeout(function(){playingNew(id)}, 100)
     if (!stream.paused){
       pauseRadio();
       playRadio();

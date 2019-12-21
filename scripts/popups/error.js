@@ -1,7 +1,11 @@
 function toggleOfflineModal() {
-    var modal = document.querySelector(".offlinemsg");
-    modal.classList.toggle("show-offlinemsg");
+    var modalError = document.querySelector(".offlinemsg");
+    modalError.classList.toggle("show-offlinemsg");
 }
 
-window.addEventListener('online',  toggleOfflineModal);
-window.addEventListener('offline', toggleOfflineModal);
+const checkOffline = () => {
+
+}
+
+//window.addEventListener('online',  toggleOfflineModal);
+//window.addEventListener('offline', toggleOfflineModal);
