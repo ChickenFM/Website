@@ -7,8 +7,10 @@ if(!localStorage.getItem('api')) {
 var api = localStorage.getItem('api')
 
   function updateNowplaying(data) {
+    if(data.now_playing.song.title == "Advert:"){
+      return;
+    }
     //var data = res.data
-    var song = data.now_playing.song.artist + " - " +data.now_playing.song.title;
     var track = data.now_playing.song.title;
     var artist = data.now_playing.song.artist;
 
@@ -29,27 +31,31 @@ var api = localStorage.getItem('api')
     //imagesrc = cover.toString();
     //imagehtml = '<img src="'+imagesrc+'"></img>'
     image = document.getElementById('coverimg');
-    image.src = coversrc.toString();
     //image.innerHTML = imagehtml.toString()
     //image.innerHTML = cover.toString();
-
-    // When audio starts playing...
-    if ('mediaSession' in navigator) {
-    navigator.mediaSession.metadata = new MediaMetadata({
-        title: track,
-        artist: artist,
-        album: 'ChickenFM',
-        artwork: [
-            { src: coversrc.toString(), sizes: '800x800', type: 'image/jpg' },
-      ]
+    axios.get(`https://api.chickenfm.com/api.php?station=${data.station.shortcode}`)
+    .then(r => {
+      document.getElementById('coverimg').src = r.data.cover_medium;
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: track,
+            artist: artist,
+            album: data.station.name,
+            artwork: [
+                { src: r.data.cover_medium, sizes: '250x250', type: 'image/jpg'},
+                { src: r.data.cover_xl, sizes: '1000x1000', type: 'image/jpg' },
+          ]
         });
-    navigator.mediaSession.setActionHandler('play', function(){
-      playRadioKey()
-    });
-    navigator.mediaSession.setActionHandler('pause', function(){
-      pauseRadioKey()
+        navigator.mediaSession.setActionHandler('play', function(){
+          playRadioKey()
+        });
+        navigator.mediaSession.setActionHandler('pause', function(){
+          pauseRadioKey()
         });
       }
+    })
+    // When audio starts playing...
+
 
    //setTimeout(playing, 5000);
  } 	//playing();
@@ -59,9 +65,11 @@ var api = localStorage.getItem('api')
     ws = new WebSocket("wss://radio.chickenfm.com/api/live/nowplaying/"+api);
 
     ws.onmessage = function(evt) {
-      
       var message = evt.data;
       nowPlaying = JSON.parse(message);
+      if(nowPlaying.now_playing.song.title == "Advert:"){
+        return;
+      }
       updateNowplaying(nowPlaying)
       elapsed = JSON.parse(message).now_playing.elapsed
       var played_at = nowPlaying.now_playing.played_at
