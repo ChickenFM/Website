@@ -346,13 +346,19 @@ position:fixed;
 /*background: cover;*/
 /*background: linear-gradient(145deg, #192839 50%, #1ab4e2 115%);*/
 /*background: linear-gradient(90deg, rgba(12,8,93,1) 0%, rgba(18,6,228,1) 52%, rgba(0,212,255,1) 100%);*/
-background-repeat: no-repeat;
-background-size: cover;
-filter: blur(10px);
--webkit-filter: blur(10px);
 width: 100%;
 height: 100%;
 margin: 0;
 padding: 0;
 z-index: -2;
+}
+
+#bgimg {
+width: 100%;
+height: 100%;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+filter: blur(10px);
+-webkit-filter: blur(10px);
 }

@@ -1,236 +1,259 @@
 <html>
-    <head>
-            <meta charset="utf-8"/>
-            <link rel="stylesheet" type="text/css" href="style/style.css">
-            <title>Chicken FM &bull; Your Chicken Station</title>
-            <script type="text/javascript" src="/scripts/offline.js"></script>
-            <link rel="stylesheet" href="https://github.hubspot.com/offline/themes/offline-theme-slide.css">
-            <link rel="stylesheet" href="/style/offlinejs-css.css">
-            <script type="text/javascript" src="/scripts/reconnectingws.js"></script>
-            <script>
-            Offline.options = {checks:{xhr: {url: '//radio.chickenfm.com/api/nowplaying/chickenfm'}}};
-            Offline.on('up', () =>{
-              playingNew(localStorage.getItem('api'))
-            })
-            </script>
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            <script type="text/javascript" src="/chickenfm.js"></script>
-            <link rel="stylesheet" href="style/animations.css">
-            <link rel="stylesheet" href="style/popup.css">
-            <link rel="manifest" href="/manifest.json">
-            <!--add favicon-->
-            <link rel="shortcut icon" type="image/png" href="/images/icons/icon_256x256.png"/>
-            <!--Meta tags-->
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta name="apple-mobile-web-app-capable" content="yes">
-            <meta name="apple-mobile-web-app-status-bar-style" content="black">
-            <meta name="apple-mobile-web-app-title" content="ChickenFM">
-            <link rel="apple-touch-icon" href="/images/icons/icon_256x256.png">
-            <meta name="theme-color" content="#0034FF" />
-            <meta name="title" content="ChickenFM - Your Chicken Station">
-            <meta name="keywords" content="ChickenFM, chickenfm, chicken fm, chicken, fm, free radio, chickens, good music, free music, ad free">
-            <meta name="robots" content="index, follow">
-            <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-            <meta name="language" content="English">
-            <meta name="revisit-after" content="14 days">
-            <!--Thanks to @DawsonX#9322 on discord :)-->
-             <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
-             <meta property="og:description" content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
-             <meta name="author" content="TheChicken">
 
-             <!--OG metatags-->
-             <meta property="og:title" content="ChickenFM - Your Chicken Station">
-             <meta property="og:description" content="This is ChickenFM, your chicken station. sotp listening to bad music or else you're bald. We play the latest hits ad free!">
-             <meta property="og:image" content="https://chickenfm.com/images/cover.png">
-             <meta property="og:url" content="https://chickenfm.com">
-             <meta property="og:site_name" content="ChickenFM">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="style/style.css">
+  <title>Chicken FM &bull; Your Chicken Station</title>
+  <script type="text/javascript" src="/scripts/offline.js"></script>
+  <link rel="stylesheet" href="https://github.hubspot.com/offline/themes/offline-theme-slide.css">
+  <link rel="stylesheet" href="/style/offlinejs-css.css">
+  <script type="text/javascript" src="/scripts/reconnectingws.js"></script>
+  <script>
+    Offline.options = { checks: { xhr: { url: '//radio.chickenfm.com/api/nowplaying/chickenfm' } } };
+    Offline.on('up', () => {
+      playingNew(localStorage.getItem('api'))
+    })
+  </script>
+  <!-- Ticksel v1.0 -->
+  <script type="text/javascript">
+    var _tcfg = _tcfg || [];
+    (function () {
+      _tcfg.push(["tags", ""]);
+      var u = "https://cdn.ticksel.com/js/analytics_v1.0.js"; _tcfg.push(["account_id", 8223459]);
+      var d = document, g = d.createElement("script"), s = d.getElementsByTagName("script")[0];
+      g.type = "text/javascript"; g.async = true; g.src = u; g.setAttribute("crossorigin", "anonymous");
+      g.setAttribute("integrity", "sha256-7grd8jMivCG0iCcJ7m/Ny4gvWb0mPVpFhRQovLkaUl8=");
+      s.parentNode.insertBefore(g, s);
+    })();
+  </script>
+  <noscript><img src="https://beacon.ticksel.com/beam?account_id=8223459&referrer=&tags=" style="border:0;" width="0"
+      height="0" alt="" /></noscript>
+  <!-- End Ticksel Code -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/chickenfm.js"></script>
+  <link rel="stylesheet" href="style/animations.css">
+  <link rel="stylesheet" href="style/popup.css">
+  <link rel="manifest" href="/manifest.json">
+  <!--add favicon-->
+  <link rel="shortcut icon" type="image/png" href="/images/icons/icon_256x256.png" />
+  <!--Meta tags-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="ChickenFM">
+  <link rel="apple-touch-icon" href="/images/icons/icon_256x256.png">
+  <meta name="theme-color" content="#0034FF" />
+  <meta name="title" content="ChickenFM - Your Chicken Station">
+  <meta name="keywords"
+    content="ChickenFM, chickenfm, chicken fm, chicken, fm, free radio, chickens, good music, free music, ad free">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="14 days">
+  <!--Thanks to @DawsonX#9322 on discord :)-->
+  <meta name="description"
+    content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
+  <meta property="og:description"
+    content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
+  <meta name="author" content="TheChicken">
 
-
-            <!--Twitter meta tags-->
-            <meta property="twitter:title" content="ChickenFM">
-            <meta property="twitter:description" content="This is ChickenFM, your chicken station. sotp listening to bad music or else you're bald. We play the latest hits ad free!">
-            <meta property="twitter:image" content="https://chickenfm.com/images/cover.jpg">
-            <meta property="twitter:url" content="https://chickenfm.com">
-            <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:site" content="@Skeppy_chicken">
-             <!--Register service worker-->
-             <script>// CODELAB: Register service worker.
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                  navigator.serviceWorker.register('/service-worker.js')
-                      .then((reg) => {
-                        console.log('Service worker registered.', reg);
-                      });
-                });
-              };</script>
-
-    </head>
-      <body>
-        <style>
-        #loading {
-        	position: fixed;
-        	left: 0px;
-        	top: 0px;
-        	width: 100%;
-        	height: 100%;
-        	z-index: 9999;
-          background-color: white;
-        }
-        </style>
-        <div id="loading"><div class="loader07"></div></div>
-        <div id="bg"></div>
-                    <!--<div class="topnav" id="myTopnav">
-                        <a href="/" class="active">Home</a>
-                      <div id="request"><a href="#" class="triggerSongreq">Request songs</a></div>
-                        <!--<a href="JavaScript:newPopup('previous.html');">Previous songs (coming soon)</a>
-                        <a target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
-                        <a href="javascript:void(0);" class="triggerMessagepop">Suggest songs</a>
-                        <a onclick="setItems()" href="javascript:void(0);" class="triggerSettings">Settings</a>
-                        <a target="_blank" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
-                        <a href="javascript:void(0);" class="icon" onclick="topnav()">
-                          <i class="fa fa-bars"></i>
-                        </a>
-                    </div>-->
-
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                      <a class="navbar-brand" href="javascript:void(0)"><img src="/images/icons/cover_small.png" width="80"></a>
-                      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                    
-                      <div class="collapse navbar-collapse" id="navb">
-                        <ul class="navbar-nav mr-auto">
-                          <li class="nav-item">
-                            <a class="nav-link active" href="/">Home</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link triggerSongreq" href="javascript:void(0)">Request songs</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link triggerMessagepop" href="javascript:void(0);">Send a message</a>
-                            </li>
-                          <li class="nav-item">
-                            <a class="nav-link" target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link triggerSettings" onclick="setItems()" href="javascript:void(0);">Settings</a>
-                          </li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                Where to listen
-                              </a>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
-                                <a class="dropdown-item" href="https://www.radionomy.com/en/radio/chickenfm/index">Radionomy</a>
-                              </div>
-                            </li>
-                        </ul>
-                      </div>
-                    </nav>
-
-                  <div class="empty"></div>
-                    <script>
-                        function topnav() {
-                          var x = document.getElementById("myTopnav");
-                          if (x.className === "topnav") {
-                            x.className += " responsive";
-                          } else {
-                            x.className = "topnav";
-                          }
-                        }
-                        </script>
-
-                        <div class="messagepop">
-                          <div class="messagepop-content">
-                              <span class="close-messagepop">×</span>
-                              <h1>Send a message!</h1>
-                              <iframe src="/requestSong.html" id="messageFrame" frameborder="0" allowtransparency="true" onload="resizeIframe(this)"></iframe>
-                          </div>
-                      </div>
-                      <script src="scripts/popups/message.js"></script>
-
-                          <div class="settings">
-                            <div class="settings-content" id="settings-content">
-                                <span class="close-settings">×</span>
-                                <h1>Settings</h1>
-                                <h2>Station</h2>
-                                <div id="changeStationContent"></div>
-                                <h2>Background animations</h2>
-                                <label><input type="radio" class="changeBackground" onclick="backgroundChange()" name="backgroundChanger" value="true"> On</label><br>
-                                <label><input type="radio" class="changeBackground" onclick="backgroundChange()" name="backgroundChanger" value="false"> Off</label>
-                            </div>
-                        </div>
-                        <script src="scripts/popups/settingspopup.js"></script>
-
-                        <div class="offlinemsg">
-                          <div class="offlinemsg-content">
-                              <h1>Uh oh!</h1>
-                              <h4>There was an error connecting to our servers!</h4>
-                              <p><a href="">Reload</a> the page or try again later.</p>
-                          </div>
-                      </div>
-                      <script src="scripts/popups/error.js"></script>
-
-                          <div class="songreq">
-                            <div class="songreq-content">
-                                <span class="songreq-close-button">&times;</span>
-                                <h1>Request songs</h1>
-                                <iframe src="https://radio.chickenfm.com/public/chickenfm/embed-requests" frameborder="0" allowtransparency="true" style="width: 100%; height: 85%; border: 0;"></iframe>
-                            </div>
-                          </div>
-                    <script src="scripts/popups/songrequest.js"></script>
+  <!--OG metatags-->
+  <meta property="og:title" content="ChickenFM - Your Chicken Station">
+  <meta property="og:description"
+    content="This is ChickenFM, your chicken station. sotp listening to bad music or else you're bald. We play the latest hits ad free!">
+  <meta property="og:image" content="https://chickenfm.com/images/cover.png">
+  <meta property="og:url" content="https://chickenfm.com">
+  <meta property="og:site_name" content="ChickenFM">
 
 
-            <div class="player player-body">
-              <!--<div id="coverimg" class="djimage"></div>-->
-              <img class="djimage" id="coverimg" style="float:left;" src="" />
-              <!--<h3 style="color:#ffffff;">ChickenFM is unfortunately down. We will be back on air as soon as possible</h3>-->
-              <!--<iframe src="http://157.245.33.91/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 100%; min-height: 150px; border: 0;"></iframe>-->
-              <div class="nowplaying">
-                <span class="dj" id="dj" style="float:right; color:white;">Now Playing:</span><br>
-                <h3 id="track" class="track" style="float:right; color:white;">-</h3><br>
-                <h5 id="artist" class="artist" style="float:right; color:white;">-</h5><br>
-                <h5 id="time" style="float:right; color:white;"><span id="elapsed"></span> / <span id="duration"></span></h5><br>            
-              </div>
-              <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
-                <audio id="player" autoplay="false" volume="0"></audio>
-                  <div style="color:white;width:fit-content;">
-                      <div class="togglr"><i class="togl fa fa-play" style="text-align: center;"></i></div>
-                      <input id="volumeslider" class="volume displaynone" type="range" min="0" max="100" value="50" step="1">
-                </div>
-              </div>
-
-
-              <script type="text/javascript" src="scripts/player.js"></script>
-              <script src="scripts/background.js"></script>
-              <script type="text/javascript" src="scripts/settings.js"></script>
-
-
-        <div class="footer">
-          <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>3</code>. <a target="_blank" href="https://l.chickenfm.com/github">GitHub</a>. Powered by <a href="//azuracast.com">AzuraCast</a>. Hosted by <a href="https://netlify.com">Netlify</a>.</p>
-        </div>
-        <script type="text/javascript">
-        jQuery(document).ready(function() {
-          if(!localStorage.getItem('api')) {
-              localStorage.setItem('api', 'chickenfm')
-            }
-          var api = localStorage.getItem('api')
-          playingNew(api)
-          backGone()
+  <!--Twitter meta tags-->
+  <meta property="twitter:title" content="ChickenFM">
+  <meta property="twitter:description"
+    content="This is ChickenFM, your chicken station. sotp listening to bad music or else you're bald. We play the latest hits ad free!">
+  <meta property="twitter:image" content="https://chickenfm.com/images/cover.jpg">
+  <meta property="twitter:url" content="https://chickenfm.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Skeppy_chicken">
+  <!--Register service worker-->
+  <script>// CODELAB: Register service worker.
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((reg) => {
+            console.log('Service worker registered.', reg);
           });
+      });
+    };</script>
 
-        function backGone() {
-          setTimeout(function(){
-            jQuery('#loading').fadeOut(300);
-          }, 1000);
-        }
+</head>
 
-        </script>
-    </body>
+<body>
+  <style>
+    #loading {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background-color: white;
+    }
+  </style>
+  <div id="loading">
+    <div class="loader07"></div>
+  </div>
+  <div id="bg">
+    <div id="bgimg"></div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="javascript:void(0)"><img src="/images/icons/cover_small.png" width="80"></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navb">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link triggerSongreq" href="javascript:void(0)">Request songs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link triggerMessagepop" href="javascript:void(0);">Send a message</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link triggerSettings" onclick="setItems()" href="javascript:void(0);">Settings</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            Where to listen
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
+            <a class="dropdown-item" href="https://www.radionomy.com/en/radio/chickenfm/index">Radionomy</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="empty"></div>
+  <script>
+    function topnav() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+  </script>
+
+  <div class="messagepop">
+    <div class="messagepop-content">
+      <span class="close-messagepop">×</span>
+      <h1>Send a message!</h1>
+      <iframe src="/requestSong.html" id="messageFrame" frameborder="0" allowtransparency="true"
+        onload="resizeIframe(this)"></iframe>
+    </div>
+  </div>
+  <script src="scripts/popups/message.js"></script>
+
+  <div class="settings">
+    <div class="settings-content" id="settings-content">
+      <span class="close-settings">×</span>
+      <h1>Settings</h1>
+      <h2>Station</h2>
+      <div id="changeStationContent"></div>
+      <h2>Background animations</h2>
+      <label><input type="radio" class="changeBackground" onclick="backgroundChange()" name="backgroundChanger"
+          value="true"> On</label><br>
+      <label><input type="radio" class="changeBackground" onclick="backgroundChange()" name="backgroundChanger"
+          value="false"> Off</label>
+    </div>
+  </div>
+  <script src="scripts/popups/settingspopup.js"></script>
+
+  <div class="offlinemsg">
+    <div class="offlinemsg-content">
+      <h1>Uh oh!</h1>
+      <h4>There was an error connecting to our servers!</h4>
+      <p><a href="">Reload</a> the page or try again later.</p>
+    </div>
+  </div>
+  <script src="scripts/popups/error.js"></script>
+
+  <div class="songreq">
+    <div class="songreq-content">
+      <span class="songreq-close-button">&times;</span>
+      <h1>Request songs</h1>
+      <iframe src="https://radio.chickenfm.com/public/chickenfm/embed-requests" frameborder="0" allowtransparency="true"
+        style="width: 100%; height: 85%; border: 0;"></iframe>
+    </div>
+  </div>
+  <script src="scripts/popups/songrequest.js"></script>
+
+
+  <div class="player player-body">
+    <!--<div id="coverimg" class="djimage"></div>-->
+    <img class="djimage" id="coverimg" style="float:left;" src="" />
+    <!--<h3 style="color:#ffffff;">ChickenFM is unfortunately down. We will be back on air as soon as possible</h3>-->
+    <!--<iframe src="http://157.245.33.91/public/chickenfm/embed" frameborder="0" allowtransparency="false" style="width: 100%; min-height: 150px; border: 0;"></iframe>-->
+    <div class="nowplaying">
+      <span class="dj" id="dj" style="float:right; color:white;">Now Playing:</span><br>
+      <h3 id="track" class="track" style="float:right; color:white;">-</h3><br>
+      <h5 id="artist" class="artist" style="float:right; color:white;">-</h5><br>
+      <h5 id="time" style="float:right; color:white;"><span id="elapsed"></span> / <span id="duration"></span></h5><br>
+    </div>
+    <!--<video controls="" autoplay="" name="media"><source src="http://157.245.33.91:8000/radio.mp3?1567750028" type="audio/mpeg"></video>-->
+    <audio id="player" autoplay="false" volume="0"></audio>
+    <div style="color:white;width:fit-content;">
+      <div class="togglr"><i class="togl fa fa-play" style="text-align: center;"></i></div>
+      <input id="volumeslider" class="volume displaynone" type="range" min="0" max="100" value="50" step="1">
+    </div>
+  </div>
+
+
+  <script type="text/javascript" src="scripts/player.js"></script>
+  <script src="scripts/background.js"></script>
+  <script type="text/javascript" src="scripts/settings.js"></script>
+
+
+  <div class="footer">
+    <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>3</code>. <a target="_blank"
+        href="https://l.chickenfm.com/github">GitHub</a>. Powered by <a href="//azuracast.com">AzuraCast</a>. Hosted by
+      <a href="https://netlify.com">Netlify</a>.</p>
+  </div>
+  <script type="text/javascript">
+    jQuery(document).ready(function () {
+      if (!localStorage.getItem('api')) {
+        localStorage.setItem('api', 'chickenfm')
+      }
+      var api = localStorage.getItem('api')
+      playingNew(api)
+      backGone()
+    });
+
+    function backGone() {
+      setTimeout(function () {
+        jQuery('#loading').fadeOut(300);
+      }, 1000);
+    }
+
+  </script>
+</body>
+
 </html>

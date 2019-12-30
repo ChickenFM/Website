@@ -36,7 +36,9 @@ var api = localStorage.getItem('api')
     axios.get(`https://api.chickenfm.com/api.php?station=${data.station.shortcode}`)
     .then(r => {
       document.getElementById('coverimg').src = r.data.cover_medium;
-      document.getElementById('bg').style.backgroundImage = `url('${r.data.cover_xl}')`;
+      if(document.getElementById('bgimg').style.backgroundImage !== `url('${r.data.cover_xl}')`){
+        document.getElementById('bgimg').style.backgroundImage = `url('${r.data.cover_xl}')`;
+      }
       if ('mediaSession' in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
             title: track,
