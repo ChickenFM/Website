@@ -113,7 +113,7 @@ var api = localStorage.getItem('api')
   
   if(seconds !== total){
     second = seconds
-    document.getElementById('elapsed').innerHTML = getTime(second * 1000)
+    document.getElementById('elapsed').innerHTML = getTime(seconds * 1000)
     document.getElementById("duration").innerHTML = getTime(total * 1000)
   }
   countTime.interval = setTimeout(function(){ countTime(played_at, total); }, 1000);
