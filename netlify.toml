@@ -11,7 +11,7 @@
   force = true
 
 [[redirects]]
-  from = "/christmasmp3"
-  to = "https://l.chickenfm.com/christmas"
+  from = "/10smp3"
+  to = "https://l.chickenfm.com/10s"
   status = 302
   force = true
