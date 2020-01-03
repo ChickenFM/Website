@@ -16,6 +16,7 @@ var api = localStorage.getItem('api')
 
     document.getElementById("track").innerHTML = track.toString();
     document.getElementById("artist").innerHTML = artist.toString();
+    document.getElementById("premidstationname").innerHTML = data.station.id;
     //var dj = data.live.streamer_name + ":";
     var djstat = data.live.streamer_name;
     document.getElementById("dj").innerHTML = dj.toString()
