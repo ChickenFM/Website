@@ -12,7 +12,6 @@ const FILES_TO_CACHE = [
     '/scripts/player.js',
     '/scripts/settings.js',
     '/scripts/install.js',
-    '/scripts/background.js',
     '/scripts/popups/settingspopup.js',
     '/scripts/popups/songrequest.js',
     '/favicon.ico'
@@ -58,7 +57,7 @@ const FILES_TO_CACHE = [
         .catch(() => {
           return caches.open(CACHE_NAME)
               .then((cache) => {
-                return cache.match('offline.html');
+                return cache.match('/offline.html');
               });
         })
   )}

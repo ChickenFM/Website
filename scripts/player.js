@@ -6,82 +6,75 @@ if(!localStorage.getItem('api')) {
 }
 var api = localStorage.getItem('api')
 
-  function updateNowplaying(data) {
-    if(data.now_playing.song.title == "Advert:"){
-      return;
-    }
-    //var data = res.data
-    var track = data.now_playing.song.title;
-    var artist = data.now_playing.song.artist;
-
-    document.getElementById("track").innerHTML = track.toString();
-    document.getElementById("artist").innerHTML = artist.toString();
-    document.getElementById("premidstationname").innerHTML = data.station.id;
-    //var dj = data.live.streamer_name + ":";
-    var djstat = data.live.streamer_name;
-    document.getElementById("dj").innerHTML = dj.toString()
-    if(djstat == "") {
-      document.getElementById("dj").innerHTML = "AutoDJ";
-      //document.getElementById("request").innerHTML = `<a href="#" id="myBtn">Request songs</a>`;
-    } else {
-      document.getElementById("dj").innerHTML = djstat.toString();
-      //document.getElementById("request").innerHTML = `<a href="#popup1">Suggest songs</a>`;
-    }
-
-    coversrc = data.now_playing.song.art;
-    //imagesrc = cover.toString();
-    //imagehtml = '<img src="'+imagesrc+'"></img>'
-    image = document.getElementById('coverimg');
-    //image.innerHTML = imagehtml.toString()
-    //image.innerHTML = cover.toString();
-    axios.get(`https://api.chickenfm.com/api.php?station=${data.station.shortcode}`)
-    .then(r => {
-      document.getElementById('coverimg').src = r.data.cover_medium;
-      if(document.getElementById('bgimg').style.backgroundImage !== `url('${r.data.cover_xl}')`){
-        document.getElementById('bgimg').style.backgroundImage = `url('${r.data.cover_xl}')`;
-      }
-      if ('mediaSession' in navigator) {
-        navigator.mediaSession.metadata = new MediaMetadata({
-            title: track,
-            artist: artist,
-            album: data.station.name,
-            artwork: [
-                { src: r.data.cover_medium, sizes: '250x250', type: 'image/jpg'},
-                { src: r.data.cover_xl, sizes: '1000x1000', type: 'image/jpg' },
-          ]
-        });
-        navigator.mediaSession.setActionHandler('play', function(){
-          playRadioKey()
-        });
-        navigator.mediaSession.setActionHandler('pause', function(){
-          pauseRadioKey()
-        });
-      }
-    })
-    // When audio starts playing...
-
-
-   //setTimeout(playing, 5000);
- } 	//playing();
+var metadata = new Vue({
+  el: '#player',
+  data: {
+    cover_medium: '',
+    cover_xl: '',
+    dj: '',
+    trackTitle: '',
+    trackArtist: '',
+    trackDuration: '',
+    trackElapsed: '',
+    premid: '',
+    radioUrl: localStorage.getItem('radioStation')
+  }
+})
+var bg = new Vue({
+  el: '#bg',
+  data: {
+    image: ''
+  }
+})
  var ws;
  function playingNew(api) {
    if("WebSocket" in window) {
     ws = new WebSocket("wss://radio.chickenfm.com/api/live/nowplaying/"+api);
 
     ws.onmessage = function(evt) {
-      var message = evt.data;
-      nowPlaying = JSON.parse(message);
-      if(nowPlaying.now_playing.song.title == "Advert:"){
-        return;
-      }
-      updateNowplaying(nowPlaying)
-      elapsed = JSON.parse(message).now_playing.elapsed
+      nowPlaying = JSON.parse(evt.data);
+      //updateNowplaying(nowPlaying)
+      metadata.trackTitle = nowPlaying.now_playing.song.title;
+      metadata.trackArtist = nowPlaying.now_playing.song.artist;
+      metadata.dj = nowPlaying.live.is_live ? nowPlaying.live.streamer_name : 'AutoDJ';
+      metadata.premid = nowPlaying.station.id;
+      axios.get(`https://api.chickenfm.com/api.php?station=${nowPlaying.station.shortcode}`)
+      .then(r => {
+        metadata.cover_medium = r.data.cover_medium;
+        metadata.cover_xl = r.data.cover_xl;
+        bg.image = r.data.cover_xl
+        if ('mediaSession' in navigator) {
+          navigator.mediaSession.metadata = new MediaMetadata({
+              title: metadata.trackTitle,
+              artist: metadata.trackArtist,
+              album: nowPlaying.station.name,
+              artwork: [
+                  { src: r.data.cover_medium, sizes: '250x250', type: 'image/jpg'},
+                  { src: r.data.cover_xl, sizes: '1000x1000', type: 'image/jpg' },
+            ]
+          });
+          navigator.mediaSession.setActionHandler('play', function(){
+            playRadioKey()
+          });
+          navigator.mediaSession.setActionHandler('pause', function(){
+            pauseRadioKey()
+          });
+          try {
+            navigator.mediaSession.setActionHandler('stop', function() {
+              pauseRadio()
+            });
+          } catch(error) {
+            console.log(error)
+          }
+        }
+      })
+
       var played_at = nowPlaying.now_playing.played_at
       var duration = nowPlaying.now_playing.duration
       if(nowPlaying.live.is_live == true){
-        if(countTime.interval)clearTimeout(countTime.interval);
-        document.getElementById('elapsed').innerHTML = 'N.A.'
-        document.getElementById("duration").innerHTML = 'N.A.'
+        if(countTime.interval) clearTimeout(countTime.interval);
+        metadata.trackDuration = '';
+        metadata.trackElapsed = '';
         return;
       }
       if(countTime.interval)
@@ -90,7 +83,7 @@ var api = localStorage.getItem('api')
       countTime(played_at, duration)
      }
      ws.onerror = () => {
-      //toggleOfflineModal()
+      setTimeout(function(){playingNew(localStorage.getItem('api'))}, 500)
      }
      ws.onclose = () => {
       if (Offline.state === 'up'){
@@ -114,8 +107,8 @@ var api = localStorage.getItem('api')
   
   if(seconds !== total){
     second = seconds
-    document.getElementById('elapsed').innerHTML = getTime(seconds * 1000)
-    document.getElementById("duration").innerHTML = getTime(total * 1000)
+    metadata.trackElapsed = getTime(seconds * 1000)
+    metadata.trackDuration = getTime(total * 1000)
   }
   countTime.interval = setTimeout(function(){ countTime(played_at, total); }, 1000);
 }
@@ -140,7 +133,7 @@ var api = localStorage.getItem('api')
   return minutes + ":" + seconds;
 }
 
- var stream = document.getElementById("player");
+ var stream = document.getElementById("audioplayer");
  stream.pause()
  //loadRadio()
  volumeslider = document.getElementById("volumeslider");
@@ -161,7 +154,7 @@ function toggleRadio(){
 function playRadio(){
   stream.src = "";
 
-  stream.src = localStorage.getItem('radioStation');
+  stream.src = metadata.radioUrl;
   //stream.volume = 0;
 
   $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
@@ -194,7 +187,6 @@ function pauseRadioKey() {
 }
 
 function playRadioKey() {
-  stream.src = "";
   playRadio()
 }
 

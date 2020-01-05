@@ -1,86 +1,39 @@
-function changeStation() {
-  var radioStationChanger = document.getElementsByName('radioStationChanger');
+Vue.config.devtools = true
 
-  for (var i = 0, length = radioStationChanger.length; i < length; i++)
-  {
-   if (radioStationChanger[i].checked)
-   {
-    var value = radioStationChanger[i].value
-    localStorage.setItem('radioStation', value)
-    var id = radioStationChanger[i].id
-    localStorage.setItem('api', id)
-    ws.close()
-    //setTimeout(function(){playingNew(id)}, 100)
-    if (!stream.paused){
-      pauseRadio();
-      playRadio();
-    }
-    break;
-   }
+var songRequestFrame = new Vue({
+  el: '#songrequestframe',
+  data: {
+    frameUrl: ''
   }
-}
-
-function checkStorage(){
-  var checkedRadio = localStorage.getItem('radioStation');
-  if (checkedRadio) {
-    $('input[value="'+checkedRadio+'"]').attr("checked", '');
-  }
-}
-window.addEventListener('storage', function(e) { 
-  console.log(e)
 })
 
-function setItems(){
-  //checkStorage()
-  var checkedBackgroundRadio = localStorage.getItem('backgroundAnimation');
-  if (checkedBackgroundRadio) {
-    $('input[value="'+checkedBackgroundRadio+'"]').attr("checked", '');
-  }
-  var div = document.getElementById('changeStationContent')
-  div.innerHTML = ''
-  axios.get('https://radio.chickenfm.com/api/stations')
-  .then(res => {
-    var data = res.data
-    for (var i = 0, len = data.length; i < len; i++) {
-      var station = res.data[i]
-      var mountpoint = searchMountpoint(true, station.mounts)
-      //.split is for removing the ? and everything that comes after it
-      var mountpointurl = mountpoint.url.split('?')[0]
-      var apiId = station.shortcode
-      //console.log(mountpoint)
-      var htmlData = `<input type="radio" class="streamRadio" onclick="changeStation()" name="radioStationChanger" id="${apiId}" value="${mountpointurl}"> ${station.name}<br>`
-      div.innerHTML += htmlData
-      checkStorage()
-      //playingNew()
-    }
-  })
-
-}
-//https://stackoverflow.com/questions/12462318/find-a-value-in-an-array-of-objects-in-javascript
-function searchMountpoint(nameKey, myArray){
-  for (var i=0; i < myArray.length; i++) {
-      if (myArray[i].is_default === nameKey) {
-          return myArray[i];
+var setStationThingies = new Vue({
+  el: '#changeStationContent',
+  data: {
+    stations: [],
+    selectedStation: {}
+  },
+  mounted () {
+    axios
+      .get('https://radio.chickenfm.com/api/stations')
+      .then(r => {
+        this.stations = r.data
+        this.selectedStation = r.data.find(e => e.shortcode === localStorage.getItem('api'))
+        songRequestFrame.frameUrl = `https://radio.chickenfm.com/public/${this.selectedStation.shortcode}/embed-requests`
+      })
+  },
+  methods: {
+    changeStation: function () {
+      var station = this.selectedStation
+      songRequestFrame.frameUrl = `https://radio.chickenfm.com/public/${station.shortcode}/embed-requests`
+      metadata.radioUrl = station.listen_url
+      localStorage.setItem('radioStation', station.listen_url)
+      localStorage.setItem('api', station.shortcode)
+      ws.close()
+      if (!stream.paused){
+        pauseRadio();
+        playRadio();
       }
-  }
-}
-
-function backgroundChange(){
-  var backgroundChanger = document.getElementsByName('backgroundChanger');
-
-  for (var i = 0, length = backgroundChanger.length; i < length; i++)
-  {
-   if (backgroundChanger[i].checked)
-   {
-    var backgroundValue = backgroundChanger[i].value
-    localStorage.setItem('backgroundAnimation', backgroundValue)
-    if(backgroundValue == 'true'){
-      onLoad()
-    } else {
-      clearTimeout(refreshTimeout);
-      document.querySelector('#bg svg').remove();
     }
-    break;
-   }
   }
-}
+})
