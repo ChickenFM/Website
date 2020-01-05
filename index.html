@@ -164,7 +164,7 @@
               
                 var $form = $(this);
                 $.post($form.attr("action"), $form.serialize()).then(function() {
-                    $("#sendMessage").innerHTML = `<div class="form--success">Almost there! Check your inbox for a confirmation e-mail.</div>`;
+                    document.querySelector('#sendMessage').innerHTML = `<div class="form--success">Almost there! Check your inbox for a confirmation e-mail.</div>`;
                 });
               });
                 </script>
