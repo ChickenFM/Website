@@ -9,14 +9,14 @@ var api = localStorage.getItem('api')
 var metadata = new Vue({
   el: '#player',
   data: {
-    cover_medium: '',
-    cover_xl: '',
-    dj: '',
-    trackTitle: '',
-    trackArtist: '',
-    trackDuration: '',
-    trackElapsed: '',
-    premid: '',
+    cover_medium: '/images/default.png',
+    cover_xl: '/images/default.png',
+    dj: 'Loading...',
+    trackTitle: 'Loading...',
+    trackArtist: 'Loading...',
+    trackDuration: 'Loading...',
+    trackElapsed: 'Loading...',
+    premid: 'Loading...',
     radioUrl: localStorage.getItem('radioStation')
   }
 })
@@ -94,14 +94,9 @@ var bg = new Vue({
 
  }
 
- //playingNew(api)
-
  function countTime(played_at, total){
   var ts = Math.round((new Date()).getTime() / 1000);
-  //var seconds = (date2 - date1) / 1000
   var seconds = ts - played_at
-  //console.log(seconds)
-  //second = parseInt(second)
   if(seconds < 0)
     seconds = 0
   
@@ -135,7 +130,6 @@ var bg = new Vue({
 
  var stream = document.getElementById("audioplayer");
  stream.pause()
- //loadRadio()
  volumeslider = document.getElementById("volumeslider");
  volumeslider.addEventListener("mousemove", setvolume);
 function setvolume(){
@@ -155,7 +149,6 @@ function playRadio(){
   stream.src = "";
 
   stream.src = metadata.radioUrl;
-  //stream.volume = 0;
 
   $('.togl').attr("class", "togl fas fa-circle-notch fa-spin");
   stream.play().then(function() {
@@ -181,7 +174,6 @@ function pauseRadio(){
 function pauseRadioKey() {
   stream.pause();
   stream.volume = 0;
-  //stream.src = "";
   $('.togl').attr("class", "togl fa fa-play");
   $('.volume').attr("class", "volume displaynone")
 }

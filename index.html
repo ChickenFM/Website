@@ -28,7 +28,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/chickenfm.js"></script>
-    <link rel="stylesheet" href="style/animations.css">
     <link rel="stylesheet" href="style/popup.css">
     <link rel="manifest" href="/manifest.json">
     <!--add favicon-->
@@ -46,7 +45,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <meta name="revisit-after" content="14 days">
-    <!--Thanks to @DawsonX#9322 on discord :)-->
+
     <meta name="description" content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
     <meta property="og:description" content="This is ChickenFM, sotp listening to bad music or else you're bald. We play the latest hits ad free!">
     <meta name="author" content="TheChicken">
@@ -68,7 +67,6 @@
     <meta name="twitter:site" content="@Skeppy_chicken">
     <!--Register service worker-->
     <script>
-        // CODELAB: Register service worker.
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/service-worker.js')
@@ -82,20 +80,6 @@
 </head>
 
 <body>
-    <style>
-        #loading {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            background-color: white;
-        }
-    </style>
-    <div id="loading">
-        <div class="loader07"></div>
-    </div>
     <div id="bg">
         <div id="bgimg" v-bind:style="{backgroundImage: 'url('+image+')'}"></div>
     </div>
@@ -193,15 +177,6 @@
     </div>
     <script src="scripts/popups/settingspopup.js"></script>
 
-    <div class="offlinemsg">
-        <div class="offlinemsg-content">
-            <h1>Uh oh!</h1>
-            <h4>There was an error connecting to our servers!</h4>
-            <p><a href="">Reload</a> the page or try again later.</p>
-        </div>
-    </div>
-    <script src="scripts/popups/error.js"></script>
-
     <div class="songreq">
         <div class="songreq-content">
             <span class="songreq-close-button">&times;</span>
@@ -241,14 +216,7 @@
                 localStorage.setItem('api', 'chickenfm')
             }
             playingNew(localStorage.getItem('api'))
-            backGone()
         });
-
-        function backGone() {
-            setTimeout(function() {
-                jQuery('#loading').fadeOut(300);
-            }, 1000);
-        }
     </script>
 </body>
 
