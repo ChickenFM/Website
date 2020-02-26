@@ -4,21 +4,6 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <title>Chicken FM &bull; Your Chicken Station</title>
-    <script type="text/javascript" src="/scripts/offline.js"></script>
-    <link rel="stylesheet" href="https://github.hubspot.com/offline/themes/offline-theme-slide.css">
-    <link rel="stylesheet" href="/style/offlinejs-css.css">
-    <script>
-        Offline.options = {
-            checks: {
-                xhr: {
-                    url: '//radio.chickenfm.com/api/nowplaying/chickenfm'
-                }
-            }
-        };
-        Offline.on('up', () => {
-            playingNew(localStorage.getItem('api'))
-        })
-    </script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

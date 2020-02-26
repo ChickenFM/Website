@@ -86,9 +86,7 @@ var bg = new Vue({
       setTimeout(function(){playingNew(localStorage.getItem('api'))}, 500)
      }
      ws.onclose = () => {
-      if (Offline.state === 'up'){
-        setTimeout(function(){playingNew(localStorage.getItem('api'))}, 500)
-      }
+        setTimeout(function(){playingNew(localStorage.getItem('api'))}, 1000)
      }
    }
 
