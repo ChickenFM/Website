@@ -335,3 +335,10 @@ top: 50%;*/
     filter: blur(10px);
     -webkit-filter: blur(10px);
 }
+
+.navbar {
+    border-radius: 10px;
+    margin: 10px;
+    background: rgb(0, 16, 255);
+    background: linear-gradient(90deg, rgba(0, 16, 255, 1) 0%, rgba(0, 101, 255, 1) 53%, rgba(59, 239, 255, 1) 100%);
+}

@@ -10,9 +10,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/chickenfm.js"></script>
     <link rel="stylesheet" href="style/popup.css">
     <link rel="manifest" href="/manifest.json">
     <!--add favicon-->
@@ -61,98 +62,81 @@
             });
         };
     </script>
-
 </head>
 
 <body>
+    <audio id="audioplayer" autoplay="false"></audio>
+    <form name="send a message" id="sendMessage" method="POST" data-netlify="true" data-netlify-recaptcha="true" hidden>
+        <p style="display: none;">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+        <p>
+            <label>Your Name: <input type="text" name="name" /></label>
+        </p>
+        <p>
+            <label>Your Email: <input type="email" name="email" /></label>
+        </p>
+        <p>
+            <label>Message: <textarea name="message"></textarea></label>
+        </p>
+        <div data-netlify-recaptcha="true"></div>
+        <p>
+            <button type="submit">Send</button>
+        </p>
+    </form>
     <div id="bg">
         <div id="bgimg" v-bind:style="{backgroundImage: 'url('+image+')'}"></div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="javascript:void(0)"><img src="/images/icons/cover_small.png" width="80"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <router-link class="navbar-brand" to="/"><img src="/images/icons/cover_small.png" width="80"></router-link>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-        <div class="collapse navbar-collapse" id="navb">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link triggerSongreq" href="javascript:void(0)">Request songs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link triggerMessagepop" href="javascript:void(0);">Send a message</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            <div class="collapse navbar-collapse" id="navb">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/">Home</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/songrequest">Request Songs</router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/sendmesssage">Send a message</router-link>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         Discord
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
-                        <a class="dropdown-item" target="_blank" href="http://l.chickenfm.com/bot">Discord Bot</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link triggerSettings" href="javascript:void(0);">Station</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" target="_blank" href="https://l.chickenfm.com/discord">Discord Server</a>
+                            <a class="dropdown-item" target="_blank" href="http://l.chickenfm.com/bot">Discord Bot</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link triggerSettings" @click="toggleModal()" href="javascript:void(0);">Station</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         Where to listen
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
-                        <a class="dropdown-item" href="https://www.radionomy.com/en/radio/chickenfm/index">Radionomy</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="empty"></div>
-    <div class="messagepop">
-        <div class="messagepop-content">
-            <span class="close-messagepop">×</span>
-            <h1>Send a message!</h1>
-            <form name="send a message" id="sendMessage" method="POST" data-netlify="true" data-netlify-recaptcha="true">
-                <p style="display: none;">
-                  <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
-                </p>
-                <p>
-                  <label>Your Name: <input type="text" name="name" /></label>   
-                </p>
-                <p>
-                  <label>Your Email: <input type="email" name="email" /></label>
-                </p>
-                <p>
-                  <label>Message: <textarea name="message"></textarea></label>
-                </p>
-                <div data-netlify-recaptcha="true"></div>
-                <p>
-                  <button type="submit">Send</button>
-                </p>
-              </form>
-              <script>
-              $("#sendMessage").submit(function(e) {
-                e.preventDefault();
-              
-                var $form = $(this);
-                $.post($form.attr("action"), $form.serialize()).then(function() {
-                    document.querySelector('#sendMessage').innerHTML = `<div class="form--success">Thank you for your message!</div>`;
-                });
-              });
-                </script>
-        </div>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="https://l.chickenfm.com/onlineradiobox">OnlineRadioBox</a>
+                            <a class="dropdown-item" href="https://www.radionomy.com/en/radio/chickenfm/index">Radionomy</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <router-view></router-view>
     </div>
-    <script src="scripts/popups/message.js"></script>
 
     <div class="settings">
         <div class="settings-content" id="settings-content">
             <span class="close-settings">×</span>
             <h1>Station</h1>
             <div id="changeStationContent">
-                <div >
+                <div>
                     <select v-model="selectedStation" @change="changeStation" :selected="selectedStation">
                         <option v-for="station in stations" :value="station">{{station.name}}</option>
                     </select>
@@ -162,39 +146,13 @@
     </div>
     <script src="scripts/popups/settingspopup.js"></script>
 
-    <div class="songreq">
-        <div class="songreq-content">
-            <span class="songreq-close-button">&times;</span>
-            <h1>Request songs</h1>
-            <iframe :src="frameUrl" frameborder="0" allowtransparency="true" style="width: 100%; height: 85%; border: 0;" id="songrequestframe"></iframe>
-        </div>
-    </div>
-    <script src="scripts/popups/songrequest.js"></script>
-
-
-    <div class="player player-body" id="player">
-        <img class="djimage" id="coverimg" style="float:left;" :src="cover_medium" />
-        <div class="nowplaying">
-            <h1 class="dj" id="dj" style=" color:white;">{{dj}}</h1>
-            <h3 id="track" class="track" style=" color:white;">{{trackTitle}}</h3>
-            <h5 id="artist" class="artist" style=" color:white;">{{trackArtist}}</h5>
-            <h5 id="time" class="time" style=" color:white;"><span id="elapsed">{{trackElapsed}}</span> / <span id="duration">{{trackDuration}}</span></h5>
-        </div>
-        <p style="display: none;" id="premidstationname">{{premid}}</p>
-        <audio id="audioplayer" autoplay="false" volume="0"></audio>
-        <div style="color:white;width:fit-content;">
-            <div class="togglr"><i class="togl fa fa-play" style="text-align: center;"></i></div>
-            <input id="volumeslider" class="volume displaynone" type="range" min="0" max="100" value="50" step="1">
-        </div>
-    </div>
-
-
     <script type="text/javascript" src="scripts/player.js"></script>
     <script type="text/javascript" src="scripts/settings.js"></script>
 
-    <div class="footer">
+    <!--<div class="footer">
         <p>Made by <a href="https://l.chickenfm.com/twitter">TheChicken</a>. Version <code>5</code>. <a target="_blank" href="https://l.chickenfm.com/github">GitHub</a>. Powered by <a href="//azuracast.com">AzuraCast</a>.</p>
-    </div>
+    </div>-->
+    <script src="scripts/router.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function() {
             if (!localStorage.getItem('api')) {
