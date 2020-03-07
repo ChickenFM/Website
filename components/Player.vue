@@ -11,7 +11,7 @@
       <h3 id="track" class="track" style=" color:white;">
         {{ data.trackTitle }}
       </h3>
-      <h5 id="artist" class="artist" style=" color:white;">
+      <h5 id="artist" class="artist" style="color:white;">
         {{ data.trackArtist }}
       </h5>
       <h5 id="time" class="time" style=" color:white;">
@@ -20,13 +20,38 @@
       </h5>
     </div>
     <p style="display: none;" id="premidstationname">{{ data.premid }}</p>
-    <div style="color:white;width:fit-content;">
+    <div
+      v-if="document.getElementById('audioplayer').paused"
+      style="color:white;width:fit-content;"
+    >
       <div class="togglr" @click="toggleRadio()">
-        <i class="togl fa fa-play" style="text-align: center;"></i>
+        <i
+          ref="playIcon"
+          class="togl fa fa-play"
+          style="text-align: center;"
+        ></i>
       </div>
       <input
         id="volumeslider"
         class="volume displaynone"
+        type="range"
+        min="0"
+        max="100"
+        step="1"
+        @input="changeVolume($event)"
+      />
+    </div>
+    <div v-else style="color:white;width:fit-content;">
+      <div class="togglr" @click="toggleRadio()">
+        <i
+          ref="playIcon"
+          class="togl fa fa-pause"
+          style="text-align: center;"
+        ></i>
+      </div>
+      <input
+        id="volumeslider"
+        class="volume"
         type="range"
         min="0"
         max="100"
@@ -47,7 +72,7 @@ module.exports = {
   },
   methods: {
     changeVolume(volume) {
-      stream.volume = volume.target.value / 100
+      stream.volume = volume.target.value / 100;
     },
     toggleRadio() {
       var stream = document.getElementById("audioplayer");

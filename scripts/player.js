@@ -17,7 +17,7 @@ var metadata = new Vue({
         trackElapsed: 'Loading...',
         premid: 'Loading...',
         radioUrl: localStorage.getItem('radioStation'),
-        requestUrl: 'https://radio.chickenfm.com/public/chickenfm/embed-requests'
+        requestUrl: 'https://radio.chickenfm.com/public/chickenfm/embed-requests',
     }
 })
 var bg = new Vue({
