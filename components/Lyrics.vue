@@ -6,6 +6,10 @@
               <section v-if="loading" class="loading">
                 <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
             </section>
+            <section v-else-if="errored">
+                <p>An error occured!</p>
+                <p>Please try again later!</p>
+            </section>
             <section v-else>
                 <p v-for="line in lyrics.split('\n')" v-bind:key="lyrics.split('\n').indexOf(line)">
                     <br v-if="line == ''" />
@@ -24,7 +28,8 @@ module.exports = {
   data () {
     return {
       lyrics: null,
-      loading: true
+      loading: true,
+      errored: false
     }
   },
     mounted () {
@@ -35,6 +40,7 @@ module.exports = {
       })
       .catch(error => {
         console.log(error)
+        this.errored = true
       })
       .finally(() => this.loading = false)
   }
