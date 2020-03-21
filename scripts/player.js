@@ -15,9 +15,9 @@ var metadata = new Vue({
         trackArtist: 'Loading...',
         trackDuration: 'Loading...',
         trackElapsed: 'Loading...',
-        premid: 'Loading...',
+        premid: '1',
         radioUrl: localStorage.getItem('radioStation'),
-        requestUrl: 'https://radio.chickenfm.com/public/chickenfm/embed-requests',
+        requestUrl: 'https://radio.chickenfm.com/public/chickenfm/embed-requests'
     }
 })
 var bg = new Vue({
@@ -40,7 +40,7 @@ function playingNew(api) {
             metadata.dj = nowPlaying.live.is_live ? nowPlaying.live.streamer_name : 'AutoDJ';
             metadata.premid = nowPlaying.station.id;
             metadata.requestUrl = `https://radio.chickenfm.com/public/${nowPlaying.station.shortcode}/embed-requests`
-            axios.get(`https://api.chickenfm.com/api.php?station=${nowPlaying.station.shortcode}`)
+            axios.get(`https://api.chickenfm.com/nowplaying/${nowPlaying.station.id}`)
                 .then(r => {
                     metadata.cover_medium = r.data.cover_medium;
                     metadata.cover_xl = r.data.cover_xl;

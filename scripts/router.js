@@ -15,6 +15,13 @@ const routes = [{
     {
         path: "/sendmesssage",
         component: window.httpVueLoader("/components/SendMessage.vue"),
+    },
+    {
+        path: "/lyrics",
+        component: window.httpVueLoader("/components/Lyrics.vue"),
+        props: {
+            metadata
+        }
     }
 ];
 
