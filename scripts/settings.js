@@ -29,8 +29,9 @@ var setStationThingies = new Vue({
             localStorage.setItem('radioStation', station.listen_url)
             localStorage.setItem('api', station.shortcode)
             ws.close()
+            var stream = document.getElementById("audioplayer")
             if (!stream.paused) {
-                pauseRadio();
+                //pauseRadio();
                 playRadio();
             }
         }
